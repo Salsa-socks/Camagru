@@ -1,0 +1,20 @@
+@import 'reset';
+
+body{
+    background: white;
+}
+
+header{
+    background: #FAFAFA;
+}
+
+header a{
+    width: 25%;
+    display: inline-block;
+    text-align: center;
+    margin-left: -3px;
+}
+
+.fas{
+    color: black;
+}
