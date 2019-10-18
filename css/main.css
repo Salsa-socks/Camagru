@@ -6,15 +6,57 @@ body{
 
 header{
     background: #FAFAFA;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
 }
 
 header a{
+    padding: .5vh;
     width: 25%;
     display: inline-block;
     text-align: center;
     margin-left: -3px;
+    box-sizing: border-box;
+}
+header a .fas:hover{
+    color: rgb(102, 212, 255);
+}
+
+header a .fas:click{
+    width: 20%;
 }
 
 .fas{
     color: black;
+}
+
+.container{
+    background: #FAFAFA;
+    width: 100%;
+    position:absolute;
+    padding-top: 50px;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.frame{
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    margin: 0 auto;
+    background:white;
+    width: 50%;
+    height: 50%;
+    margin-top: 5%;
+}
+
+.profile{
+    width: 100%;
+    top : 0;
+    height: 10%;
+    border-bottom: 1px solid black;
 }
