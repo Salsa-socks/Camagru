@@ -258,8 +258,35 @@ header a .fas:click {
 }
 
 .booth{
-    width: 400px;
+    width: 48%;
     background: white;
     border: 1px solid rgb(214, 214, 214);
     margin: 0 auto;
+    text-align: center;
+}
+
+.video{
+    margin-bottom: 2vh;
+}
+
+.capturebtn{
+    color: white;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    border: none;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    background: rgb(58, 193, 255);    
+    margin-top:10%;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 auto;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    margin-bottom: 2%;
+}
+
+#canvas{
+    width: 100%;
 }
