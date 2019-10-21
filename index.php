@@ -29,6 +29,7 @@
                     <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
             </form>
+            <button type="submit" style="background: rgb(0, 90, 132); margin-top:5%; width: 60% margin: 0 auto;">Dont have an Account-Register Here</button>
         </div>
     </div>
     <div class="waveWrapper waveAnimation">

@@ -16,7 +16,7 @@
             <a href= "search.html"><i class="fas fa-search"></i></a>
             <a href= "likes.html"><i class="fas fa-heart"></i></a>
             <a href= "profile.html"><i class="fas fa-user-circle"></i></a>
-            <a href= "#"><i class="fas fa-camera-retro"></i></a>
+            <a href= "cam.php"><i class="fas fa-camera-retro"></i></a>
         </header>
         <div class="container">
             <div class="frame">
