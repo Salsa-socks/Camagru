@@ -1,5 +1,4 @@
 <?php
     require_once '../core/init.php';
 
-    echo config::get('mysql/host');
-?>
+    echo Config::get('mysql/host');
