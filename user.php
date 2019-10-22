@@ -28,6 +28,7 @@ margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
                     <video id="video" width="100%"></video>
                     <a href ="#" id="capture" class="capturebtn">Take Photo</a>
                     <canvas id="canvas" width="500" height="500" ></canvas>
+                    <a href ="#" id="upload" class="uploadbtn">Upload</a>
                 </div>
             </div>
         </div> 
