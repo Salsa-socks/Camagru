@@ -5,8 +5,13 @@
                 $config = $GLOBALS['config'];
                 $path = explode('/', $path);
 
-                print_r($path);
+                foreach ($path as $value)
+                    if (isset($config[$value])){
+                        $config = $config[$value];
+                    }
             }
+            return $config;
         }
+        // return false;
     }
 ?>

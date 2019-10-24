@@ -3,7 +3,7 @@
     
     $GLOBALS['config'] = array(
         'mysql' => array(
-            'host' => '127.0.0.1',
+            'host' => 'localhost',
             'username' => 'root',
             'password' => 'Ocvm53ujido',
             'db' => 'camlog'
