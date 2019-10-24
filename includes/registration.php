@@ -1,3 +1,10 @@
+<?php
+  require_once '../core/init.php';
+
+  if (Input::exists()) {
+    
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +29,7 @@
         <input type="text" placeholder="Enter your name" name="name" required>
 
         <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter desired username" name="username" required>
+        <input type="text" placeholder="Enter desired username" name="username" value="" required>
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" required>
@@ -30,8 +37,8 @@
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" required>
 
-        <label for="psw_repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw_repeat" required>
+        <label for="psw_repeat"><b>Re-enter Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw_repeat" value="" required>
     <hr>
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
