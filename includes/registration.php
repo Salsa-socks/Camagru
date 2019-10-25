@@ -28,7 +28,9 @@
       if ($validation->passed()){
         echo 'Passed';
       }else {
-        print_r($validation->errors());
+        foreach($validation->errors() as $error) {
+          echo $erorr, '<br>';
+        }
       }
   }
 ?>
