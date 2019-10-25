@@ -11,23 +11,24 @@
             'unique' => 'users'
         ),
         'password' => array(
-            'required' => 'true',
-            'min' => 6,
+            'required' => true,
+            'min' => 6
         ),
         'password_again' => array(
-            'required' => 'true',
-            'matches' => 'password',
+            'required' => true,
+            'matches' => 'password'
         ),
         'name' => array(
-            'required' => 'true',
+            'required' => true,
             'min' => 2,
-            'max' => 50,
+            'max' => 50
         )
       ));
+      
       if ($validation->passed()){
-        // echo 'Passed';
+        echo 'Passed';
       }else {
-        // print_r($validation->errors());
+        print_r($validation->errors());
       }
   }
 ?>
@@ -46,16 +47,16 @@
     <div class="logobox">
         <img src="./img/logo.png">
     </div>
-<form action="registration.php">
+<form action= "">
   <div class="container">
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
         <label for="name"><b>Name</b></label>
-        <input type="text" placeholder="Enter your name" name="name" id = "name" value="<?php echo escape(Input::get('name'));?>">
+        <input type="text" placeholder="Enter your name" name="name" value="" id ="name">
 
         <label for="username"><b>Username</b></label>
-        <input type="text" id ="username" placeholder="Enter desired username" name="username" value="<?php echo escape(Input::get('username'));?>">
+        <input type="text" id ="username" placeholder="Enter desired username" name="username" value="">
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" >
