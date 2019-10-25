@@ -9,7 +9,7 @@
         }
 
         public function check($source, $items = array()) {
-            foreach($items as $item => $rules){
+            foreach($items as $item => $rules) {
                 foreach($rules as $rule => $rule_value) {
 
                     $value = trim($source[$item]);
@@ -47,11 +47,10 @@
                         }
                     }
                 }
-            }
-            if (empty($this->_errors)) {
-                $this->_passed = true;
-            }
-            return $this;
+        if (empty($this->_errors)) {
+            $this->_passed = true;
+        }
+        return $this;
         }
 
         private function addError($error) {
