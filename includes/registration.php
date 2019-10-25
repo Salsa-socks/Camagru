@@ -53,10 +53,10 @@
     <p>Please fill in this form to create an account.</p>
     <hr>
         <label for="name"><b>Name</b></label>
-        <input type="text" placeholder="Enter your name" name="name" value="" id ="name">
+        <input type="text" placeholder="Enter your name" name="name" value="<?php echo escape(Input::get("name"));?>" id ="name">
 
         <label for="username"><b>Username</b></label>
-        <input type="text" id ="username" placeholder="Enter desired username" name="username" value="">
+        <input type="text" id ="username" placeholder="Enter desired username" name="username" value ="<?php echo escape(Input::get('username'));?>">
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" >

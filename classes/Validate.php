@@ -12,12 +12,28 @@
             foreach($items as $item => $rules){
                 foreach($rules as $rule => $rule_value) {
 
-                    $value = $source[$item];
+                    $value = trim($source[$item]);
                     
                     if ($rule == 'required' && empty($value)){
                         $this->addError("{$item} is required");
-                    } else {
-                        
+                    } else if (!empty($value)) {
+                        switch($rule) {
+                            case 'min':
+                                if (strlen($value) < ($rule_value)) {
+                                    $this->addError("{$item} must be minimum of {$rule_value} characters");
+                                }
+                            break;
+                            case 'max':
+
+                            break;
+                            case 'matches':
+
+                            break;
+                            case 'unique':
+
+                            break;
+
+                        }
                     }
                 }
             }
