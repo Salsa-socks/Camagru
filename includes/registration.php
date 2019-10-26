@@ -27,9 +27,21 @@
         ));
         
         if ($validation->passed()){
-          Session::flash('success', 'you have registered successfully!');
-          header('Location: index.php');
-        }else {
+          $user = new User();
+          try {
+            $user->create(array(
+              'username' => '',
+              'password' => '',
+              'salt' => '',
+              'email' => '',
+              'name' => '',
+              'joined' => '',
+              'group' => ''
+            ));
+          } catch (Exception $e) {
+            die($e->getMessage());
+          }
+        } else {
           foreach($validation->errors() as $error) {
             echo $erorr, '<br>';
           }
