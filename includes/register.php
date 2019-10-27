@@ -31,11 +31,11 @@
           $salt = Hash::salt(32);
           try {
             $user->create(array(
+              'name' => Input::get('name'),
               'username' => Input::get('username'),
+              'email' => Input::get('email'),
               'password' => Hash::make(Input::get('password'), $salt),
               'salt' => $salt,
-              'email' => Input::get('email'),
-              'name' => Input::get('name'),
               'joined' => date('Y-m-d H:i:s'),
               'group' => '1'
             ));
