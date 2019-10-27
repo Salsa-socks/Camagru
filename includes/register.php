@@ -33,8 +33,8 @@
             $user->create(array(
               'name' => Input::get('name'),
               'username' => Input::get('username'),
-              'email' => Input::get('email'),
               'password' => Hash::make(Input::get('password'), $salt),
+              'email' => Input::get('email'),
               'salt' => $salt,
               'joined' => date('Y-m-d H:i:s'),
               'group' => '1'
