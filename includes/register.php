@@ -28,22 +28,23 @@
         
         if ($validation->passed()){
           $user = new User();
+          $salt = Hash::salt(32);
           try {
             $user->create(array(
-              'username' => '',
-              'password' => '',
-              'salt' => '',
-              'email' => '',
-              'name' => '',
-              'joined' => '',
-              'group' => ''
+              'username' => Input::get('username'),
+              'password' => Hash::make(Input::get('password'), $salt),
+              'salt' => $salt,
+              'email' => Input::get('email'),
+              'name' => Input::get('name'),
+              'joined' => date('Y-m-d H:i:s'),
+              'group' => '1'
             ));
           } catch (Exception $e) {
             die($e->getMessage());
           }
         } else {
           foreach($validation->errors() as $error) {
-            echo $erorr, '<br>';
+            echo $error, '<br>';
           }
         }
     }
@@ -58,13 +59,12 @@
     <link rel = "icon" href="./img/logowhite.png" type = "image/x-icon"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registration</title>
 </head>
 <body>
     <div class="logobox">
         <img src="./img/logo.png">
     </div>
-<form action= "">
+<form action="" method='post'>
   <div class="container">
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
@@ -76,18 +76,18 @@
         <input type="text" id ="username" placeholder="Enter desired username" name="username" value ="<?php echo escape(Input::get('username'));?>">
 
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" >
+        <input type="text" placeholder="Enter Email" name="email" id="email">
 
         <label for="password"><b>Password</b></label>
         <input type="password" id="password" placeholder="Enter Password" name="password" >
 
         <label for="password_again"><b>Re-enter Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="passwaord_again" value="" id="password_again">
+        <input type="password" placeholder="Repeat Password" name="password_again" id="password_again">
     <hr>
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
     <input type="hidden" name="token" value="<?php echo Token::generate();?>">
-    <button type="submit" class="registerbtn">Register</button>
+    <input type="submit" class="registerbtn" value="Register">Register</button>
   </div>
   
   <div class="container signin">

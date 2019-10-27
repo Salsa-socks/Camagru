@@ -81,7 +81,7 @@
                     }
                     $x++;
                 }
-                $sql = "INSERT INTO users (`" . implode('`, `', $keys ) . "`) VALUES ({$values})";    
+                $sql = "INSERT INTO 'users' (`" . implode('`, `', $keys ) . "`) VALUES ({$values})";    
                 if (!$this->query($sql, $fields)->error()) {
                     return true;
                 }

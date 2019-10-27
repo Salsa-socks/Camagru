@@ -4,7 +4,7 @@
         private $_errors = array();
         private $_db = null;
 
-        public function __construct(){
+        public function __construct() {
             $this->_db = DB::getInstance();
         }
 
@@ -15,7 +15,7 @@
                     $value = trim($source[$item]);
                     $item = escape($item);
                     
-                    if ($rule == 'required' && empty($value)){
+                    if ($rule === 'required' && empty($value)){
                         $this->addError("{$item} is required");
                     } else if (!empty($value)) {
                         switch($rule) {
@@ -37,13 +37,11 @@
                             case 'unique':
                                $check - $this->_db->get($rule_value, array($item, '=', $value));
                                if ($check->count()) {
-                                   $this->addError("{$item} alread exists.");
+                                   $this->addError("{$item} already exists.");
                                }
 
                             }
-
                             break;
-
                         }
                     }
                 }
