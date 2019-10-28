@@ -1,3 +1,32 @@
+<?php
+  require_once '../core/init.php';
+
+  if(Input::exists()){
+    if(Token::check(Input::get('token'))) {
+      $validate = new Validate();
+      $validation = $validate->check($_POST, array(
+        'username' => array('required' => true),
+        'password' => array('required' => true)
+      ));
+
+      if($validation->passed()) {
+        $user = new User();
+        $login = $user->login(Input::get('username'), Input::get('password'));
+
+        if($login) {
+          echo 'Success';
+        } else {
+          echo 'oops failed to login';
+        }
+      } else {
+        foreach($validation->errors() as $error) {
+          echo $error, '<br>';
+        }
+      }
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,19 +44,20 @@
                 <img src="./img/logo.png">
             </div>
             <h2>Login</h2>
-            <form action="/action_page.php" method="post">
+            <form action="" method="post">
                 <div class="container2">
-                  <label for="uname"><b>Username</b></label>
-                  <input type="text" placeholder="Enter Username" name="uname" required>
+                  <label for="username"><b>Username</b></label>
+                  <input type="text" placeholder="Enter Username" name="username" id="username">
                   <label for="psw"><b>Password</b></label>
-                  <input type="password" placeholder="Enter Password" name="psw" required>     
-                  <button type="submit">Login</button>
-                  <label><input type="checkbox" checked="checked" name="remember"> Remember me</label>
+                  <input type="password" placeholder="Enter Password" name="password" id="password">     
+                  <input type="submit" value="Login" class="logbutton">
+                  <label><input type="checkbox" checked="checked" name="remember">Remember me</label>
                 </div>
                 <div class="container3">
                     <button type="button" class="cancelbtn">Cancel</button>
                     <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
+                <input type="hidden" name="token" value="<?php echo Token::generate();?>">
             </form>
             <a href="registration.php"><button type="register" style="background: rgb(0, 90, 132); margin-top:5%; width: 60% margin: 0 auto;">Dont have an Account-Register Here</button></a>
         </div>
