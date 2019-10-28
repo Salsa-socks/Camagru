@@ -332,3 +332,7 @@ header a .fas:click {
     text-decoration: none;
     cursor: pointer;
 }
+
+.errorbox {
+    text-align: center;
+}

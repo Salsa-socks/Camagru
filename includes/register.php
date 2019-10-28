@@ -46,8 +46,8 @@
             ));
 
             Session::flash('home', 'You have been registerd!');
-            header('Location: index.php');
-            
+            Redirect::to('index.php');
+
           } catch (Exception $e) {
             die($e->getMessage());
           }
