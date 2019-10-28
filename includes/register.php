@@ -44,6 +44,10 @@
               'joined' => date('Y-m-d H:i:s'),
               'group' => '1'
             ));
+
+            Session::flash('home', 'You have been registerd!');
+            header('Location: index.php');
+            
           } catch (Exception $e) {
             die($e->getMessage());
           }
