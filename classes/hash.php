@@ -5,7 +5,7 @@
         }
 
         public static function salt($length) {
-            return bin2hex(random_bytes($length));
+            return random_bytes($length);
         }
 
         public static function unique() {

@@ -10,6 +10,8 @@
         private function __construct() {
             try {
                 $this->_pdo = new PDO('mysql:host='.Config::get('mysql/host').';dbname='.Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
+                $this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->_pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             } catch(PDOException $e) {
                 die($e->getMessage());
             }
@@ -81,7 +83,7 @@
                     }
                     $x++;
                 }
-                $sql = "INSERT INTO 'users' (`" . implode('`, `', $keys ) . "`) VALUES ({$values})";    
+                $sql = "INSERT INTO users (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
                 if (!$this->query($sql, $fields)->error()) {
                     return true;
                 }

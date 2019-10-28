@@ -8,7 +8,7 @@
 
         public function create($fields = array()) {
             if (!$this->_db->insert('users', $fields)) {
-                throw new Exception('The was a problem creating account');
+                throw new Exception('There was a problem creating account');
             }
         }
     }

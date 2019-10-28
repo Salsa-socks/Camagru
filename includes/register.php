@@ -23,6 +23,11 @@
               'required' => true,
               'min' => 2,
               'max' => 50
+          ),
+          'email' => array(
+            'required' => true,
+            'min' => 2,
+            'max' => 50
           )
         ));
         
@@ -31,9 +36,9 @@
           $salt = Hash::salt(32);
           try {
             $user->create(array(
-              'name' => Input::get('name'),
               'username' => Input::get('username'),
               'password' => Hash::make(Input::get('password'), $salt),
+              'name' => Input::get('name'),
               'email' => Input::get('email'),
               'salt' => $salt,
               'joined' => date('Y-m-d H:i:s'),
@@ -87,7 +92,7 @@
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
     <input type="hidden" name="token" value="<?php echo Token::generate();?>">
-    <input type="submit" class="registerbtn" value="Register">Register</button>
+    <input type="submit" class="registerbtn" value="Register"></button>
   </div>
   
   <div class="container signin">
