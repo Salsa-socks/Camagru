@@ -11,12 +11,13 @@
 
       if($validation->passed()) {
         $user = new User();
-        $login = $user->login(Input::get('username'), Input::get('password'));
+        $remember = (Input::get('remember') === 'on') ? true : false;
+        $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
         if($login) {
-          echo 'Success';
+          Redirect::to('profile.php');
         } else {
-          echo 'oops failed to login';
+          Redirect::to('register.php');
         }
       } else {
         foreach($validation->errors() as $error) {
@@ -51,7 +52,7 @@
                   <label for="psw"><b>Password</b></label>
                   <input type="password" placeholder="Enter Password" name="password" id="password">     
                   <input type="submit" value="Login" class="logbutton">
-                  <label><input type="checkbox" checked="checked" name="remember">Remember me</label>
+                  <label for="remember"><input type="checkbox" checked="checked" name="remember" id="remember">Remember me</label>
                 </div>
                 <div class="container3">
                     <button type="button" class="cancelbtn">Cancel</button>
@@ -59,7 +60,7 @@
                 </div>
                 <input type="hidden" name="token" value="<?php echo Token::generate();?>">
             </form>
-            <a href="registration.php"><button type="register" style="background: rgb(0, 90, 132); margin-top:5%; width: 60% margin: 0 auto;">Dont have an Account-Register Here</button></a>
+            <a href="register.php"><button type="register" style="background: rgb(0, 90, 132); margin-top:5%; width: 60% margin: 0 auto;">Dont have an Account-Register Here</button></a>
         </div>
     </div>
     <div class="waveWrapper waveAnimation">
