@@ -15,7 +15,7 @@
         $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
         if($login) {
-          Redirect::to('profile.php');
+          Redirect::to('index.php');
         } else {
           Redirect::to('register.php');
         }
