@@ -30,6 +30,7 @@
 
         if($hashcheck->count()) {
             $user = new User($hashcheck->first()->user_id);
+            $user->login();
         }
     }
 ?>
