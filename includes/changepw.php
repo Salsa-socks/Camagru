@@ -37,7 +37,7 @@
                     ));
 
                     Session::flash('home', 'Your password has been changed');
-                    Redirect::to('profile.php');
+                    Redirect::to('user.php');
                 }
             } else {
                 foreach($validation->errors() as $error) {

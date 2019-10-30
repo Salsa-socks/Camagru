@@ -11,10 +11,10 @@
     </head>
     <body>
         <header>
-            <a href= "index.html"><i class="fas fa-home"></i></a>
-            <a href= "search.html"><i class="fas fa-search"></i></a>
-            <a href= "likes.html"><i class="fas fa-heart"></i></a>
-            <a href= "profile.html"><i class="fas fa-user-circle"></i></a>
+            <a href= "index.php"><i class="fas fa-home"></i></a>
+            <a href= "search.php"><i class="fas fa-search"></i></a>
+            <a href= "likes.php"><i class="fas fa-heart"></i></a>
+            <a href= "user.php"><i class="fas fa-user-circle"></i></a>
             <button id="myBtn" style="color: white; border: none; cursor: pointer; background: none; width: 0;
 margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
         </header>
