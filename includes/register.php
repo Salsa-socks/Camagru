@@ -1,6 +1,6 @@
 <?php
   require_once '../core/init.php';
-  session_destroy();
+  // session_destroy();
   if (Input::exists()) {
     if (Token::check(Input::get('token'))) {
       $validate = new Validate();
