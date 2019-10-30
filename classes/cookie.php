@@ -1,7 +1,7 @@
 <?php
     class Cookie {
         public static function exists($name) {
-            return (isset($_COOKIE[$name])) ? treu: false;
+            return (isset($_COOKIE[$name])) ? true : false;
         }
 
         public static function get($name) {
