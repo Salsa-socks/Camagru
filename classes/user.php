@@ -26,6 +26,15 @@
             }
         }
 
+        public function update($fields = array(), $id = null) {
+            if (!$id && $this->isLoggedin) {
+                $id = $this->data()->$id;
+            }
+            if(!$this->_db->update('users', $id, $fields)) {
+                throw new Exception('There was a problem updating your details.');
+            }
+        }
+
         public function create($fields = array()) {
             if (!$this->_db->insert('users', $fields)) {
                 throw new Exception('There was a problem creating account');
