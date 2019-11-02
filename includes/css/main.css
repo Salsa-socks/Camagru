@@ -118,7 +118,7 @@ header a .fas:click {
 .container {
     width: 100%;
     position: absolute;
-    padding-top: 50px;
+    padding-top: 5%;
     top: 0;
     bottom: 0;
     z-index: 1;
@@ -126,17 +126,13 @@ header a .fas:click {
 
 .frame {
     border: 1px solid #CCC;
-    border-radius: 3px;
     margin: 0 auto;
     background: white;
-    width: 50%;
-    height: fit-content;
-    margin-top: 5%;
+    width: 100%;
 }
 
 .profile {
     width: 100%;
-    top: 0;
     height: 20%;
     border-bottom: 1px solid #222;
     display: flex;
@@ -145,12 +141,14 @@ header a .fas:click {
 
 .circle {
     background: #FAFAFA;
-    height: 9vh;
-    margin: 6px 6px 6px 6px;
-    width: 9vh;
+    height: 14vh;
+    width: 14vh;
     position: relative;
     border-radius: 50%;
     border: 1px solid #222;
+    margin-left: 1%;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .user-d {
@@ -167,7 +165,7 @@ header a .fas:click {
     margin-bottom: 12px;
 }
 
-.location {
+.unamed {
     font-family: 'Oswald', sans-serif;
     width: 80%;
     height: 10%;
