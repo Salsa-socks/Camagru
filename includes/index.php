@@ -4,22 +4,6 @@
     if (Session::exists('home')) {
         echo '<p>' . Session::flash('home') . '</p>';
     }
-
-    $user = new User();
-    if($user->isLoggedin()) {
-?>    
-    <p>Hello <a href='profile.php?user=<?php echo escape($user->data()->username); ?>'><?php echo escape($user->data()->username); ?></a>!</p>
-    <ul>
-        <li><a href="logout.php">Log out</a></li>
-    </ul>
-<?php
-    // if($user->hasPermission('admin')) {
-    //     echo '<p>You are an administrator</p>';
-    // }
-    
-    } else {
-        echo '<p> You need to <a href="login.php">log in</a> or <a href="register.php">register</a>, peasant </p>';
-    } 
 ?>
 
 <html>
@@ -34,6 +18,22 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
     </head>
     <body>
-        
+        <div class="landinginfo">
+            <div class="style fade-in">
+                <p>Welcome to</p>
+                <div class="superheader"><h4>CAMAGRU</h4></div>
+                <?php
+                $user = new User();
+                if($user->isLoggedin()) {
+                ?>
+                <p>Hello <a href='profile.php?user=<?php echo escape($user->data()->username); ?>'><?php echo escape($user->data()->username); ?></a>!</p>
+                <a href="logout.php">Log out</a>
+                <?php
+                } else {
+                    echo '<p> You need to <a href="login.php">log in</a> or <a href="register.php">register</a>, peasant </p>';
+                }
+                ?>
+            </div>
+        </div>
     </body>
 </html>

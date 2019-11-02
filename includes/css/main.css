@@ -1,5 +1,6 @@
 body {
     font-family: 'Oswald', sans-serif;
+    overflow: hidden;
 }
 
 header {
@@ -86,14 +87,16 @@ span.psw {
     }
 }
 
-.container .frame .logobox {
+.content {
     width: 100%;
-    height: 15%;
-    text-align: center;
-    padding-bottom: 1.5vh;
-    border-bottom: 1px solid rgb(214, 214, 214);
+    padding-top: 4%;
+    border-bottom: 1px solid rgb(139, 139, 139);
+}
+
+.profile {
+    width: 100%;
     display: flex;
-    background-color: white;
+    flex-direction: row;
 }
 
 img {
@@ -116,27 +119,11 @@ header a .fas:click {
 }
 
 .container {
-    width: 100%;
-    position: absolute;
+    width: 50%;
     padding-top: 5%;
-    top: 0;
-    bottom: 0;
     z-index: 1;
-}
-
-.frame {
-    border: 1px solid #CCC;
     margin: 0 auto;
     background: white;
-    width: 100%;
-}
-
-.profile {
-    width: 100%;
-    height: 20%;
-    border-bottom: 1px solid #222;
-    display: flex;
-    flex-direction: row;
 }
 
 .circle {
@@ -189,7 +176,7 @@ header a .fas:click {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 0;
+    z-index: -1;
     top: 0;
     margin: auto;
 }
@@ -352,4 +339,83 @@ header a .fas:click {
 .details {
     width: 50%;
     margin: 0 auto;
+}
+
+.fade-in {
+    animation: fadeIn ease 5s;
+    -webkit-animation: fadeIn ease 5s;
+    -moz-animation: fadeIn ease 5s;
+    -o-animation: fadeIn ease 5s;
+    -ms-animation: fadeIn ease 5s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.style {
+    text-align: center;
+}
+
+.style p {
+    color: black;
+    font-size: 4vh;
+}
+
+.superheader {
+    font-size: 9vw;
+    margin-top: -7vh;
+}
+
+h4 {
+    margin: 0;
+}
+
+.landinginfo {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
 }

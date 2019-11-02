@@ -47,7 +47,7 @@ margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
                 </div>
             </div>
         </div> 
-        <div class="container">
+        <div class="content">
             <div class="frame">
                 <div class="profile">
                     <div class="circle"></div>
