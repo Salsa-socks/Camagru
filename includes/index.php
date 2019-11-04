@@ -10,7 +10,7 @@
     <head>
         <link rel="stylesheet" href="./css/main.css">
         <link rel = "icon" href="./img/logowhite.png" type = "image/x-icon"> 
-        <title>Document</title>
+        <title>Home</title>
         <script src="https://kit.fontawesome.com/fcfc638980.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700&display=swap" rel="stylesheet">
         <meta charset="UTF-8">
