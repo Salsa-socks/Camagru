@@ -34,7 +34,7 @@ margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h2>Hi, take a pic and upload it!</h2>
-                <p>Make sure you click allow to ue your cam, when you're 
+                <p>Make sure you click allow to use your cam, when you're 
                     done taking your pic, add a filter and upload it </p>
                 <div class="booth">
                     <video id="video" width="100%"></video>
