@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    padding: 12px;
+    padding: 1%;
     width: 60%;
     background-color: white;
     margin-left: auto;
@@ -60,7 +60,6 @@ a {
 .signin {
     text-align: center;
     color: black;
-    width: 80%;
 }
 
 .logobox {

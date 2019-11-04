@@ -26,11 +26,11 @@
                 $user = new User();
                 if($user->isLoggedin()) {
                 ?>
-                <p style="margin-top: -2vh;">Hello <a href='profile.php?user=<?php echo escape($user->data()->username); ?>'><?php echo escape($user->data()->username); ?></a>!</p>
+                <p style="margin-top: -2vh; text-shadow: 3px 2px 1px #ffffff;">Hello <a href='profile.php?user=<?php echo escape($user->data()->username); ?>'><?php echo escape($user->data()->username); ?></a>!</p>
                 <a href="logout.php">Log out</a>
                 <?php
                 } else {
-                    echo '<p style="margin-top: -2vh;"> You need to <a href="login.php">log in</a> or <a href="register.php">register</a>, peasant </p>';
+                    echo '<p style="margin-top: -2vh; text-shadow: 3px 2px 1px #ffffff;"> You need to <a href="login.php">log in</a> or <a href="register.php">register</a>, peasant </p>';
                 }
                 ?>
             </div>
