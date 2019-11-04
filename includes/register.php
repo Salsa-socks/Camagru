@@ -79,19 +79,19 @@
     <p>Please fill in this form to create an account.</p>
     <hr>
         <label for="name"><b>Name</b></label>
-        <input type="text" placeholder="Enter your name" name="name" value="<?php echo escape(Input::get("name"));?>" id ="name">
+        <input type="text" placeholder="Enter your name" name="name" value="<?php echo escape(Input::get("name"));?>" id ="name" required>
 
         <label for="username"><b>Username</b></label>
-        <input type="text" id ="username" placeholder="Enter desired username" name="username" value ="<?php echo escape(Input::get('username'));?>">
+        <input type="text" id ="username" placeholder="Enter desired username" required name="username" value ="<?php echo escape(Input::get('username'));?>">
 
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email">
+        <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
         <label for="password"><b>Password</b></label>
-        <input type="password" id="password" placeholder="Enter Password" name="password" >
+        <input type="password" id="password" placeholder="Enter Password" name="password" required>
 
         <label for="password_again"><b>Re-enter Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="password_again" id="password_again">
+        <input type="password" placeholder="Repeat Password" name="password_again" id="password_again" required>
     <hr>
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 

@@ -1,16 +1,13 @@
 <?php
     require_once '../core/init.php';
 
-    if (!$username = Input::get('user')) {
-        Redirect::to('profile.php');
-    } else {
+        $username = Input::get('user');
         $user = new User($username);
         if (!$user->exists()) {
             Redirect::to(404);
         } else {
             $data = $user->data();
         }
-    }
 ?>
 
 <html>

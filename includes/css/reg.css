@@ -1,5 +1,7 @@
 body {
     font-family: 'Oswald', sans-serif;
+    background-image: url(../img/back.png);
+    background-size: cover;
 }
 
 * {
@@ -8,7 +10,7 @@ body {
 
 .container {
     padding: 12px;
-    width: 70%;
+    width: 60%;
     background-color: white;
     margin-left: auto;
     margin-right: auto;

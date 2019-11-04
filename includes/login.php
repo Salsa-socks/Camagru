@@ -38,7 +38,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Camagru</title>
 </head>
-<body>
+<body style="background-image: url(./img/back2.png); background-size: unset;">
     <div class="container">
         <div class="frame">
             <div class="logobox">
@@ -57,22 +57,11 @@
                 <div class="container3">
                     <button type="button" class="cancelbtn">Cancel</button>
                     <span class="psw">Forgot <a href="#">password?</a></span>
+                    <a href="register.php"><button type="register" style="background: rgb(0, 90, 132); margin-top:5%; width: 100%;">Dont have an Account-Register Here</button></a>
                 </div>
                 <input type="hidden" name="token" value="<?php echo Token::generate();?>">
             </form>
-            <a href="register.php"><button type="register" style="background: rgb(0, 90, 132); margin-top:5%; width: 60% margin: 0 auto;">Dont have an Account-Register Here</button></a>
         </div>
-    </div>
-    <div class="waveWrapper waveAnimation">
-          <div class="waveWrapperInner bgTop">
-            <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
-          </div>
-          <div class="waveWrapperInner bgMiddle">
-            <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
-          </div>
-          <div class="waveWrapperInner bgBottom">
-            <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
-          </div>
     </div>
 </body>
 </html>
