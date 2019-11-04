@@ -78,13 +78,11 @@ margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
                     <br/>
                     <br/>
                     <label for="name">Username</label>
-                    <input type="text" name="username" value="<?php echo escape($user->data()->username); ?>" required="">
+                    <input type="text" name="username" value="<?php echo escape($user->data()->username); ?>" required="" pattern="/^[a-zA-Z0-9 ]{5,}$/;">
                     <br/>
                     <br/>
                     <label for="name">Email Address</label>
-                    <input type="text" name="email" value="<?php echo escape($user->data()->email); ?>" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-var email_regex = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/;
-var username_regex = /^[a-zA-Z0-9 ]{5,}$/;" title="Make sure you use a valid email address" required="">
+                    <input type="text" name="email" value="<?php echo escape($user->data()->email); ?>" pattern="/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/;"oninvalid="This.setcustomvalidity('cant leave blank')" title="Make sure you use a valid email address" required="">
                     <br/>
                     <br/>
                     <h3>Click "Update" to update your details</h3>
