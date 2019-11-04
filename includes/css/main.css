@@ -160,7 +160,8 @@ header a .fas:click {
 }
 
 .booth {
-    width: 40%;
+    width: 90%;
+    position: relative;
     background: white;
     border: 1px solid rgb(214, 214, 214);
     margin: 0 auto;
@@ -168,7 +169,9 @@ header a .fas:click {
 }
 
 .video {
-    margin-bottom: 2vh;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .capturebtn {
@@ -191,6 +194,9 @@ header a .fas:click {
 
 #canvas {
     width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #myBtn .fas {
