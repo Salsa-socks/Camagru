@@ -7,7 +7,7 @@
         $_results,
         $_count = 0;
 
-        private function __construct() {
+        public function __construct() {
             try {
                 $this->_pdo = new PDO('mysql:host='.Config::get('mysql/host').';dbname='.Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
                 $this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

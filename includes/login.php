@@ -17,7 +17,7 @@
         if($login) {
           Redirect::to('profile.php');
         } else {
-          Redirect::to('register.php');
+          Redirect::to(404);
         }
       } else {
         foreach($validation->errors() as $error) {

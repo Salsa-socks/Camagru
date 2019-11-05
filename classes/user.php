@@ -27,7 +27,7 @@
         }
 
         public function update($fields = array(), $id = null) {
-            if (!$id && $this->isLoggedin) {
+            if (!$id && $this->isLoggedin()) {
                 $id = $this->data()->$id;
             }
             if(!$this->_db->update('users', $id, $fields)) {

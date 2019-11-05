@@ -10,14 +10,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
     </head>
     <body>
-
         <div class="errorbox">
             <img src="../img/error-icon-15.png">
-            <br/>
-            <h2>Sorry that page could not be found!</h2>
-            <br/>
-            <p>Please check your internet connection or try again later</p>
         </div>
-
     </body>
 </html>

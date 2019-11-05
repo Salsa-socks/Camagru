@@ -35,7 +35,7 @@
                             'email' => Input::get('email')
                         ));
                         Session::flash('home', 'Your details have been updated');
-                        Redirect::to('user.php');
+                        Redirect::to('profile.php');
 
                     } catch(Exception $e) {
                         die($e->getMessage());
@@ -74,15 +74,15 @@ margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
             <form action="" method="post">
                 <div class="field">
                     <label for="name">Name</label>
-                    <input type="text" name="name" value="<?php echo escape($user->data()->name); ?>" required="">
+                    <input type="text" name="name" value="<?php echo escape($user->data()->name);?>" required="">
                     <br/>
                     <br/>
                     <label for="name">Username</label>
-                    <input type="text" name="username" value="<?php echo escape($user->data()->username); ?>" required="" pattern="/^[a-zA-Z0-9 ]{5,}$/;">
+                    <input type="text" name="username" value="<?php echo escape($user->data()->username);?>" required="">
                     <br/>
                     <br/>
                     <label for="name">Email Address</label>
-                    <input type="text" name="email" value="<?php echo escape($user->data()->email); ?>" pattern="/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,10})$/;"oninvalid="This.setcustomvalidity('cant leave blank')" title="Make sure you use a valid email address" required="">
+                    <input type="text" name="email" value="<?php echo escape($user->data()->email);?>" required="">
                     <br/>
                     <br/>
                     <h3>Click "Update" to update your details</h3>
