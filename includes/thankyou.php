@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="landinginfo">
-            <div class="style fade-in">
+            <div class="fade-in">
                 <img src="./img/logo.png" style="width:7%";>
                 <p style="background: white;width: 40%;margin: 0 auto; font-size: 3.5vh">Thank You for registering</p>
                 <p style="background: white;width: 45%;margin: 0 auto; font-size: 3vh">Check your email for verification mail</p>

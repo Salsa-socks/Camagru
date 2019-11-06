@@ -17,7 +17,7 @@
             if($login) {
               Redirect::to('profile.php');
             } else {
-              Redirect::to(404);
+              Redirect::to('./errors/404.php');
             }
         }
       } else {
@@ -40,6 +40,7 @@
     <title>Camagru</title>
 </head>
 <body style="background-image: url(./img/back2.png); background-size: unset;">
+<div class="fade-in">
     <div class="container">
         <div class="frame">
             <div class="logobox">
@@ -64,5 +65,6 @@
             </form>
         </div>
     </div>
+</div>
 </body>
 </html>
