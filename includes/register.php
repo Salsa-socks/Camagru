@@ -48,7 +48,7 @@
             $email = Input::get('email');
             $username = Input::get('username');
             $subject = 'Signup | Verification';
-            $message = 'Thank you for registerimg. Please click the link below and verify your registration:';
+            $message = 'Thank you for registerimg. Please click the link to verify your registration:';
             $message .= "\r\n";
             $message .= "<a href='http://localhost:8080/instaclone/includes/verify.php?user=$username&salt=$salt'>Register Account</a>";
             $headers = 'From:noreply@camagru.co.bnkosi' . "\r\n";
@@ -57,6 +57,7 @@
             mail($email, $subject, $message, $headers);
 
             Session::flash('home', 'Please check your email for confirmation');
+            Redirect::to('thankyou.php');
             
           } catch (Exception $e) {
             die($e->getMessage());
@@ -98,7 +99,7 @@
         <input type="text" placeholder="Enter Email" name="email" id="email" required="" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Email')">
 
         <label for="password"><b>Password</b></label>
-        <input type="password" id="password" placeholder="Enter Password" name="password" required="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Password - Password needs to be 8 minimum characters, minimum 1 special character, 1 Capital letter amd 1 number')" autocomplete="off">>
+        <input type="password" id="password" placeholder="Enter Password" name="password" required="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Password - Password needs to be 8 minimum characters, minimum 1 special character, 1 Capital letter amd 1 number')" autocomplete="off">
 
         <label for="password_again"><b>Re-enter Password</b></label>
         <input type="password" placeholder="Repeat Password" name="password_again" id="password_again" required="">

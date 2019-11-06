@@ -2,6 +2,7 @@
     require_once '../core/init.php';
 
     $user = new User();
+    $id= $user->data()->id;
     if (!$user->isLoggedIn()) {
         Redirect::to('index.php');
     }
@@ -33,7 +34,7 @@
                             'name' => Input::get('name'),
                             'username' => Input::get('username'),
                             'email' => Input::get('email')
-                        ));
+                        ),$id);
                         Session::flash('home', 'Your details have been updated');
                         Redirect::to('profile.php');
 
