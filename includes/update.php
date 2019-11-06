@@ -63,34 +63,34 @@
     <body>
         <header>
             <a href= "index.php"><i class="fas fa-home"></i></a>
-            <a href= "search.php"><i class="fas fa-search"></i></a>
+            <a href= "profile.php"><i class="fas fa-smile-wink"></i></a>
             <a href= "likes.php"><i class="fas fa-heart"></i></a>
             <a href= "profile.php"><i class="fas fa-user-circle"></i></a>
-            <button id="myBtn" style="color: white; border: none; cursor: pointer; background: none; width: 0;
-margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
+            <button id="myBtn" style="color: white; border: none; cursor: pointer; background: none; width: 0; margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
         </header>
-        <br/>
-        <h2>Update Your details</h2>
-        <div class="details">
-            <form action="" method="post">
-                <div class="field">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" value="<?php echo escape($user->data()->name);?>" required="" >
-                    <br/>
-                    <br/>
-                    <label for="name">Username</label>
-                    <input type="text" name="username" value="<?php echo escape($user->data()->username);?>" required="" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid, Username needs to be minimum 5 characters, minimum 1 special character, 1 Capital letter amd 1 number')">
-                    <br/>
-                    <br/>
-                    <label for="name">Email Address</label>
-                    <input type="text" name="email" value="<?php echo escape($user->data()->email);?>" required="" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Email')">
-                    <br/>
-                    <br/>
-                    <h3>Click "Update" to update your details</h3>
-                    <input type="submit" value="Update">
-                    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-                </div>
-            </form>
+        <div class="fade-in">
+            <br/>
+            <h2>Update Your details</h2>
+            <div class="details">
+                <form action="" method="post">
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" value="<?php echo escape($user->data()->name);?>" required="" >
+                        <br/>
+                        <br/>
+                        <label for="name">Username</label>
+                        <input type="text" name="username" value="<?php echo escape($user->data()->username);?>" required="" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid, Username needs to be minimum 5 characters, minimum 1 special character, 1 Capital letter amd 1 number')">
+                        <br/>
+                        <br/>
+                        <label for="name">Email Address</label>
+                        <input type="text" name="email" value="<?php echo escape($user->data()->email);?>" required="" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Email')">
+                        <br/>
+                        <h3>Click "Update" to update your details</h3>
+                        <input type="submit" value="Update" style="font-size: 2vw; border-radius: 0px !important; background: rgb(58, 193, 255); font-family: Oswald; width: 18vh; height: 5%; color: white;">
+                        <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+                    </div>
+                </form>
+            </div>
         </div>
     </body>
 </html>

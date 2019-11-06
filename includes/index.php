@@ -18,21 +18,23 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
     </head>
     <body>
-        <div class="landinginfo">
-            <div class="style fade-in">
-                <p>Welcome to</p>
-                <div class="superheader"><h4>CAMAGRU</h4></div>
-                <?php
-                $user = new User();
-                if($user->isLoggedin()) {
-                ?>
-                <p style="margin-top: -2vh; text-shadow: 3px 2px 1px #ffffff;">Hello <a href='profile.php?user=<?php echo escape($user->data()->username); ?>'><?php echo escape($user->data()->username); ?></a>!</p>
-                <a href="logout.php">Log out</a>
-                <?php
-                } else {
-                    echo '<p style="margin-top: -2vh; text-shadow: 3px 2px 1px #ffffff;"> You need to <a href="login.php">log in</a> or <a href="register.php">register</a>, peasant </p>';
-                }
-                ?>
+        <div class="fade-in">
+            <div class="landinginfo">
+                    <p style="font-size: 3vw">Welcome to</p>
+                    <br/>
+                    <div class="superheader"><h4>CAMAGRU</h4></div>
+                    <?php
+                    $user = new User();
+                    if($user->isLoggedin()) {
+                    ?>
+                    <p style="margin-top: -2vh; text-shadow: 3px 2px 1px #ffffff; font-size:5vw">Hello <a href='profile.php?user=<?php echo escape($user->data()->username); ?>'><?php echo escape($user->data()->username); ?></a>!</p>
+                    <a href="logout.php" style="font-size: 3vw;">Log out</a>
+                    <?php
+                    } else {
+                        echo '<p style="margin-top: -2vh; text-shadow: 3px 2px 1px #ffffff; font-size: 3vw;"> You need to <a href="login.php">log in</a> or <a href="register.php">register</a>, peasant </p>';
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </body>

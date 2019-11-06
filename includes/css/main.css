@@ -23,6 +23,16 @@ h2 {
     font-weight: 600;
 }
 
+.field {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.sendinfo {
+    margin: 0 auto;
+    width: 60%;
+}
+
 header a {
     padding: .5vh;
     width: 20%;
@@ -40,6 +50,10 @@ input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+}
+
+input:hover {
+    opacity: 0.8;
 }
 
 button {
