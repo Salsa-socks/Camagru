@@ -44,17 +44,10 @@ margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
                 </div>
             </div>
         </div> 
-        <div class="content">
-            <div class="frame">
-                <div class="profile">
-                    <div class="circle"></div>
-                        <div class="user-d">
-                        <div class="usern"><h3 style="font-size: 2.5vh"><?php echo escape($data->username); ?></h3></div>
-                        <div class="unamed"><h2 style="text-align: left;font-size: 3vh;"><?php echo escape($data->name); ?> </h2></div>
-                    </div>
-                </div>
+            <div class="profile">
+                <div class="usern"><h3 style="text-align: left; font-size: 3vh"> Username: <?php echo escape($data->username); ?></h3></div>
+                <div class="unamed"><h2 style="text-align: left;font-size: 2vh; padding-top: 1%"> Name: <?php echo escape($data->name);?> </h2></div>  
             </div>
-        </div>
         <script src="./js/modal.js"></script>
         <script src="./js/cam.js"></script>
     </body>

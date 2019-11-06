@@ -57,7 +57,6 @@
             mail($email, $subject, $message, $headers);
 
             Session::flash('home', 'Please check your email for confirmation');
-            Redirect::to('thankyou.php');
             
           } catch (Exception $e) {
             die($e->getMessage());

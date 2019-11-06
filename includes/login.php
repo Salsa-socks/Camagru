@@ -13,11 +13,12 @@
         $user = new User();
         $remember = (Input::get('remember') === 'on') ? true : false;
         $login = $user->login(Input::get('username'), Input::get('password'), $remember);
-
-        if($login) {
-          Redirect::to('profile.php');
-        } else {
-          Redirect::to(404);
+        if ($user->data()->emailconfirm == 1) {
+            if($login) {
+              Redirect::to('profile.php');
+            } else {
+              Redirect::to(404);
+            }
         }
       } else {
         foreach($validation->errors() as $error) {

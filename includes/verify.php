@@ -1,34 +1,22 @@
 <?php
     require_once '../core/init.php';
 
-    // if(isset($_GET['salt'])) {
-        // $con = DB::getInstance();
         $conn = new User();
         $user = new User(Input::get('user'));
         $check = $user->data()->id;
         $saltcheck = $_GET['salt'];
-        if ($saltcheck)
-        {
-            echo "hello user is there";
-        }
         if ($check) {
 
             try {
-                $update = "UPDATE users SET emailconfirm = 1 WHERE id=$check";
-                // Redirect::to('login.php');
+                $conn->update(array(
+                    'emailconfirm' => 1
+                ), $check);
+                Redirect::to('login.php');
 
             } catch(Exception $e) {
-                die($e->getMessage());
-            }
-        }else {
-            foreach($validation->errors() as $error) {
-                echo $error, '<br>';
+                die("Something went wrong validating your account, please register again, sorry, peasant..");
             }
         }
-        
-    // } else {
-    //     die ("Something went wrong validating your account, please register again, sorry, peasant..");
-    // }
 
 
     // //////////////////////////////////////////////////////////////////
@@ -36,7 +24,7 @@
     // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-    // $update = "UPDATE users SET emailconfirm = 1 WHERE id=33";
+    // $update = "UPDATE users SET emailconfirm = 1 WHERE id=$check";
 
     // $stmt = $conn->prepare($update);
     // $stmt->execute();
