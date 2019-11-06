@@ -74,15 +74,15 @@ margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
             <form action="" method="post">
                 <div class="field">
                     <label for="name">Name</label>
-                    <input type="text" name="name" value="<?php echo escape($user->data()->name);?>" required="">
+                    <input type="text" name="name" value="<?php echo escape($user->data()->name);?>" required="" >
                     <br/>
                     <br/>
                     <label for="name">Username</label>
-                    <input type="text" name="username" value="<?php echo escape($user->data()->username);?>" required="">
+                    <input type="text" name="username" value="<?php echo escape($user->data()->username);?>" required="" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid, Username needs to be minimum 5 characters, minimum 1 special character, 1 Capital letter amd 1 number')">
                     <br/>
                     <br/>
                     <label for="name">Email Address</label>
-                    <input type="text" name="email" value="<?php echo escape($user->data()->email);?>" required="">
+                    <input type="text" name="email" value="<?php echo escape($user->data()->email);?>" required="" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Email')">
                     <br/>
                     <br/>
                     <h3>Click "Update" to update your details</h3>
