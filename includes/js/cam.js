@@ -19,8 +19,29 @@
     document.getElementById('capture').addEventListener('click', function() {
         context.drawImage(video, 0, 0, 500, 380);
         document.getElementById("canvas").style.zIndex = "1";
-        // photo.setAttribute('src', canvas.toDataURL('image/png'));
+        console.log(canvas.toDataURL());
     });
+
+    document.getElementById('upload').addEventListener('click', function() {
+        var layer1 = canvas.toDataURL('image/png');
+        // layer2 = null;
+        // if (document.getElementById("overlay").hasAttribute("src")) {
+        //     layer2 = canvasOverlay.toDataURL('image/png');
+        // }
+        const url = "../includes/upload.php";
+        var xhttp = new XMLHttpRequest();
+        var values = "baseimage=" + layer1;
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                var response = xhttp.responseText;
+                console.log(response);
+            }
+        }
+        xhttp.send(values);
+    });
+
 })();
 
 function camReset() {

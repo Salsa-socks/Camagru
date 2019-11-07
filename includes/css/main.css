@@ -75,7 +75,7 @@ a {
     color: rgb(58, 193, 255);
 }
 
-. .cancelbtn {
+.cancelbtn {
     width: auto;
     padding: 10px 18px;
     margin-left: 4%;
@@ -169,7 +169,7 @@ header a .fas:click {
 }
 
 .booth {
-    width: 90%;
+    width: 75%;
     position: relative;
     background: white;
     border: 1px solid rgb(214, 214, 214);
@@ -184,11 +184,17 @@ header a .fas:click {
     z-index: 0;
 }
 
+.cambuttons {
+    display: flex;
+    flex-direction: row;
+    padding-top: 1vh;
+}
+
 .capturebtn {
     color: white;
     padding-top: 3vh;
     padding-bottom: 3vh;
-    border: none;
+    border: 1px solid white;
     display: block;
     cursor: pointer;
     width: 100%;
@@ -206,7 +212,7 @@ header a .fas:click {
     color: white;
     padding-top: 3vh;
     padding-bottom: 3vh;
-    border: none;
+    border: 1px solid white;
     display: block;
     cursor: pointer;
     width: 100%;

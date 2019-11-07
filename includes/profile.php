@@ -38,10 +38,13 @@
                         done taking your pic, add a filter and upload it </p>
                     <div class="booth">
                         <video id="video" width="100%"></video>
-                        <a href ="#" id="capture" class="capturebtn">Take Photo</a>
-                        <canvas id="canvas" width="500" height="380" ></canvas>
-                        <a href ="#" id="upload" class="uploadbtn">Upload</a>
-                        <button type="button" style="font-size: 1.6vh;" class="uploadbtn" onclick="camReset()">Retake photo</button>
+                        <br/>
+                        <div class="cambuttons">
+                            <a href ="#" id="capture" class="capturebtn">Take Photo</a>
+                            <canvas id="canvas" width="500" height="380" ></canvas>
+                            <button type="button" style="font-size: 1.6vh;" class="uploadbtn" onclick="camReset()">Retake photo</button>
+                            <a href ="#" id="upload" class="uploadbtn">Upload</a>
+                </div>
                     </div>
                 </div>
             </div> 
