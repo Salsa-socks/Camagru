@@ -41,6 +41,7 @@
                         <a href ="#" id="capture" class="capturebtn">Take Photo</a>
                         <canvas id="canvas" width="500" height="380" ></canvas>
                         <a href ="#" id="upload" class="uploadbtn">Upload</a>
+                        <button type="button" style="font-size: 1.6vh;" class="uploadbtn" onclick="camReset()">Retake photo</button>
                     </div>
                 </div>
             </div> 
@@ -50,6 +51,7 @@
                 </div>
             <script src="./js/modal.js"></script>
             <script src="./js/cam.js"></script>
+
         </div>
     </body>
 </html>

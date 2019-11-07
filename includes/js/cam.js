@@ -2,7 +2,6 @@
     var video = document.getElementById('video'),
         canvas = document.getElementById('canvas'),
         context = canvas.getContext('2d'),
-        // photo = document.getElementById('photo'),
         vendorURL = window.URL || window.webkitURL;
 
     navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
@@ -19,6 +18,11 @@
 
     document.getElementById('capture').addEventListener('click', function() {
         context.drawImage(video, 0, 0, 500, 380);
+        document.getElementById("canvas").style.zIndex = "1";
         // photo.setAttribute('src', canvas.toDataURL('image/png'));
     });
 })();
+
+function camReset() {
+    document.getElementById("canvas").style.zIndex = "-1";
+}

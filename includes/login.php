@@ -15,7 +15,7 @@
         $login = $user->login(Input::get('username'), Input::get('password'), $remember);
         if ($user->data()->emailconfirm == 1) {
             if($login) {
-              Redirect::to('profile.php');
+              Redirect::to('../includes/profile.php');
             } else {
               Redirect::to('./errors/404.php');
             }
@@ -55,11 +55,10 @@
                   <input type="password" placeholder="Enter Password" name="password" id="password">     
                   <input type="submit" value="Login" class="logbutton">
                   <label for="remember"><input type="checkbox" checked="checked" name="remember" id="remember">Remember me</label>
+                  <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
                 <div class="container3">
-                    <button type="button" class="cancelbtn">Cancel</button>
-                    <span class="psw">Forgot <a href="#">password?</a></span>
-                    <a href="register.php"><button type="register" style="background: rgb(0, 90, 132); margin-top:5%; width: 100%;">Dont have an Account-Register Here</button></a>
+                    <a href="register.php" class="regbutton" >Dont have an Account-Register Here</a>
                 </div>
                 <input type="hidden" name="token" value="<?php echo Token::generate();?>">
             </form>

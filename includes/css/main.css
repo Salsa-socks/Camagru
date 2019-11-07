@@ -75,7 +75,7 @@ a {
     color: rgb(58, 193, 255);
 }
 
-.cancelbtn {
+. .cancelbtn {
     width: auto;
     padding: 10px 18px;
     margin-left: 4%;
@@ -88,7 +88,6 @@ a {
 }
 
 span.psw {
-    float: right;
     margin-right: 4%;
     padding-top: 16px;
 }
@@ -150,6 +149,19 @@ header a .fas:click {
     margin-bottom: 12px;
 }
 
+.regbutton {
+    background: rgb(0, 90, 132);
+    width: 70%;
+    display: block;
+    text-align: center;
+    color: white;
+    margin: 1% auto;
+    font-family: 'Oswald', sans-serif;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    font-size: 80%;
+}
+
 .unamed {
     font-family: 'Oswald', sans-serif;
     width: 80%;
@@ -169,9 +181,28 @@ header a .fas:click {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 0;
 }
 
 .capturebtn {
+    color: white;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    border: none;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    background: rgb(58, 193, 255);
+    margin-top: 10%;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 auto;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    margin-bottom: 2%;
+}
+
+.uploadbtn {
     color: white;
     padding-top: 3vh;
     padding-bottom: 3vh;
@@ -194,6 +225,7 @@ header a .fas:click {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 0;
 }
 
 #myBtn .fas {
