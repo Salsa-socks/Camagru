@@ -1,6 +1,8 @@
 <?php
   require_once '../core/init.php';
-
+  if (Session::exists('login')) {
+      echo '<p>' . Session::flash('login') . '</p>';
+  }
   if(Input::exists()){
     if(Token::check(Input::get('token'))) {
       $validate = new Validate();
@@ -55,7 +57,9 @@
                   <input type="password" placeholder="Enter Password" name="password" id="password">     
                   <input type="submit" value="Login" class="logbutton">
                   <label for="remember"><input type="checkbox" checked="checked" name="remember" id="remember">Remember me</label>
-                  <span class="psw">Forgot <a href="#">password?</a></span>
+                  <br/>
+                  <br/>
+                  <span class="psw">Forgot <a href="forgotpw.php">password?</a></span>
                 </div>
                 <div class="container3">
                     <a href="register.php" class="regbutton" >Dont have an Account-Register Here</a>

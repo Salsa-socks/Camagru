@@ -1,10 +1,9 @@
 <?php
     require_once '../core/init.php';
 
-    $user = new User();
-    $user = new User(Input::get('user'));
+    $user = new User($username = Input::get('user'));
     $saltcheck = $_GET['salt'];
-
+    $check = $user->data()->id;
     if (Input::exists()) {
             $validate = new Validate();
             $validation = $validate->check($_POST, array(
@@ -18,26 +17,21 @@
                     'matches' => 'password_new'
                 )
             ));
-
             if($validation->passed()) {
                 }
                     $salt = Hash::salt(32);
                     try {
-                        $conn->update(array(
+                        $user->update(array(
                         'password' => Hash::make(Input::get('password_new'), $salt),
                         'salt' => $salt,
-                        ));
-                        Session::flash('home', 'Your password has been changed');
+                        ),$check);
+                        Session::flash('login', 'Your password has been changed');
                         Redirect::to('login.php');
             
                     } catch(Exception $e) {
                         die("Something went wrong validating your account, please register again, sorry, peasant..");
                     }
-            } else {
-                foreach($validation->errors() as $error) {
-                    echo $error;
-                }
-            }
+            } 
 ?>
 <html>
     <head>
@@ -58,13 +52,13 @@
                 </div>
                 <div class="field">
                     <label for="name">New Password</label>
-                    <input type="text" name="password_new">
+                    <input type="password" name="password_new" required="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Password - Password needs to be 8 minimum characters, minimum 1 special character, 1 Capital letter amd 1 number')" autocomplete="off">
                     <br/>
                     <br/>
                 </div>
                 <div class="field">
                     <label for="name">Re Enter new password</label>
-                    <input type="text" name="password_new_again">
+                    <input type="password" name="password_new_again" required="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Password - Password needs to be 8 minimum characters, minimum 1 special character, 1 Capital letter amd 1 number & passwords must match')" autocomplete="off">
                     <br/>
                 </div>
                 <div class= "Sendinfo">

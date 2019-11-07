@@ -1,35 +1,41 @@
 <?php
-require_once 'core/init.php';
+require_once '../core/init.php';
 
-if (Input::exists()) {
-    if (Token::check(Input::get('token'))) {
-        
-        $validate = new Validate();
-        $validation = $validate->check($_POST, array(
-            'username' => array('required' => true)
-        ));
-        if (!$user->find($username)){
-            Session::flash('home', 'No such User');
-            Redirect::to('index.php');
-        }else {
+if (Session::exists('forgotpw')) {
+    echo '<p>' . Session::flash('forgotpw') . '</p>';
+}
+
+    if (Input::exists()) {
+        if (Token::check(Input::get('token'))) {
+            echo"about to validate";
+            $validate = new Validate();
+            $validation = $validate->check($_POST, array(
+                'username' => array('required' => true)
+            ));
+            echo "about to find un";
+
             if ($validation->passed()) {
-                
                 $user = new User($username = Input::get('username'));
-                $salt = $user->data()->salt;
-                $email = $user->data()->email;
-                $subject = 'Forgot password';
-                $message = 'Please click the link to change your password:';
-                $message .= "<a href='http://localhost:8080/instaclone/includes/changepw.php?user=$username&salt=$salt'>Change Password</a>";
-                $headers = 'From:noreply@camagru.co.bnkosi' . "\r\n";
-                $headers .= "MIME-Version: 1.0" . "\r\n";
-                $headers .= "Content-Type:text/html;charset=UTF-8". "\r\n";
-                mail($email, $subject, $message, $headers);
-                Session::flash('home', 'Please check your email for link to change your password');
+                if (!$user->find($username)) {
+                    Session::flash('home', 'No such User');
+                    Redirect::to('../includes/index.php');
+                } else {
+                    $salt = $user->data()->salt;
+                    $email = $user->data()->email;
+                    $subject = 'Forgot password';
+                    $message = 'Please click the link to change your password:';
+                    $message .= "<a href='http://localhost:8080/instaclone/includes/changepw.php?user=$username&salt=$salt'>Change Password</a>";
+                    $headers = 'From:noreply@camagru.co.bnkosi' . "\r\n";
+                    $headers .= "MIME-Version: 1.0" . "\r\n";
+                    $headers .= "Content-Type:text/html;charset=UTF-8". "\r\n";
+                    mail($email, $subject, $message, $headers);
+                    Session::flash('login', 'Please check your email for a link to change your password');
+                    Redirect::to('login.php');
+                    echo "sent";
+                }
             }
-
         }
     }
-}
 ?>
 
 
@@ -53,8 +59,10 @@ if (Input::exists()) {
                 </div>
                 <div class="field">
                     <label for="username">Your Username</label>
-                    <input type="text" name="username">
+                    <input type="text" name="username" id="username">
                 </div>
+                <input type="submit" value="Send Email" class="logbutton" style="width:50%;display: block;margin: 0 auto;">
+                <input type="hidden" name="token" value="<?php echo Token::generate();?>">
             </form>
         </div>
     </body>
