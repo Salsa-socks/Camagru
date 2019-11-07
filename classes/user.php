@@ -78,7 +78,10 @@
                             }
 
                             return true;
-                        }
+                        } 
+                    } else {
+                        Session::flash('home', 'No such User');
+                        Redirect::to('../includes/index.php');
                     }
                 }
                 return false;

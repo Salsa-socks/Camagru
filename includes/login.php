@@ -15,6 +15,7 @@
         $user = new User();
         $remember = (Input::get('remember') === 'on') ? true : false;
         $login = $user->login(Input::get('username'), Input::get('password'), $remember);
+        
         if ($user->data()->emailconfirm == 1) {
             if($login) {
               Redirect::to('../includes/profile.php');
