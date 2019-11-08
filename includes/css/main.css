@@ -70,6 +70,12 @@ button:hover {
     opacity: 0.8;
 }
 
+td {
+    border: 1px solid white;
+    background: rgb(58, 193, 255);
+    border-collapse: collapse;
+}
+
 a {
     text-decoration: none;
     color: rgb(58, 193, 255);
@@ -224,6 +230,10 @@ header a .fas:click {
     font-family: 'Oswald', sans-serif;
     font-weight: 600;
     margin-bottom: 2%;
+}
+
+#stick {
+    visibility: hidden;
 }
 
 #canvas {

@@ -7,6 +7,9 @@
     Redirect::to('login.php');
     }
    $layer1 = $_POST["baseimage"];
+   $layer2 = $_POST["overlayimage"];
+
+   echo $layer1;
 
    if(!empty($layer1) && !empty($username)){
     $baseimage = $username.time().".png";
@@ -17,4 +20,24 @@
     file_put_contents($imagepath, $imgdecode);
    }
 
+   // make image file for overlay
+   if(isset($layer2)){
+      $overlayimage = "overlay".time().".png";
+      $overlaypath = "./usergallery/".$overlayimage;
+      $imgurl = str_replace("data:image/png;base64,", "", $layer2);
+      $imageurl = str_replace(" ", "+", $imgurl);
+      $imgdecode = base64_decode($imageurl);
+      file_put_contents($overlaypath, $imgdecode);
+   }
+   // merge images
+   if(isset($layer1) && isset($layer2)){
+         $dest = imagecreatefrompng($imagepath);
+         $src = imagecreatefrompng($overlaypath);
+         imagecopyresampled($dest, $src, 0, 0, 0, 0, 50, 50, 100, 100); //size of overl
+         imagepng($dest, $imagepath);
+         imagedestroy($dest);
+         imagedestroy($src);
+         unlink($overlaypath);
+   }
+   return 0;
 ?>

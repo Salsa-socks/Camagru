@@ -37,14 +37,28 @@
                     <p>Make sure you click allow to use your cam, when you're 
                         done taking your pic, add a filter and upload it </p>
                     <div class="booth">
+                        <img id="stick" style="position:absolute; width: 90%;">
                         <video id="video" width="100%"></video>
                         <br/>
                         <div class="cambuttons">
                             <a href ="#" id="capture" class="capturebtn">Take Photo</a>
+                            <canvas id="sticker" width="400" height="300" style="position:absolute;top: 0;left: 0;"></canvas>
                             <canvas id="canvas" width="500" height="380" ></canvas>
                             <button type="button" style="font-size: 1.6vh;" class="uploadbtn" onclick="camReset()">Retake photo</button>
                             <a href ="#" id="upload" class="uploadbtn">Upload</a>
-                </div>
+                        </div>
+                        <div class="stickers">
+                        <h3 style="margin: 0;">Stickers</h3>
+                            <table style="width:100%">
+                                <tr>
+                                    <td><img id="place1" src="./stickers/s1ph.png" style="width: 70%;"></td>
+                                    <td><img id="place2" src="./stickers/s2ph.png" style="width: 70%;"></td>
+                                    <td><img id="place3" src="./stickers/s3ph.png" style="width: 70%;"></td>
+                                    <td><img id="place4" src="./stickers/s4ph.png" style="width: 70%;"></td>
+                                    <td><img id="place5" src="./stickers/s5ph.png" style="width: 70%;"></td> 
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div> 
