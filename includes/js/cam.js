@@ -36,6 +36,7 @@
     place1.addEventListener('click', function() {
         document.getElementById("stick").style.visibility = "visible";
         overlay.src = '../includes/stickers/sticker1.png';
+
     });
 
     place2.addEventListener('click', function() {
@@ -57,6 +58,8 @@
         document.getElementById("stick").style.visibility = "visible";
         overlay.src = "../includes/stickers/sticker5.png";
     });
+
+
 
     document.getElementById('upload').addEventListener('click', function() {
         var layer1 = canvas.toDataURL('image/png');
