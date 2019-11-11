@@ -63,12 +63,7 @@
 
     document.getElementById('upload').addEventListener('click', function() {
         var layer1 = canvas.toDataURL('image/png');
-        // console.log(`layer1: ${layer1}`)
         var layer2 = overlaycanvas.toDataURL('image/png');
-        // if (document.getElementById("sticker").hasAttribute("src")) {
-        //     layer2 = overlaycanvas.toDataURL('image/png');
-        //     console.log(`layer2: ${layer2}`)
-        // }
         const url = "../includes/upload.php";
         var xhttp = new XMLHttpRequest();
         var values = "baseimage=" + layer1 + "&overlayimage=" + layer2;

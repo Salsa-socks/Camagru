@@ -5,10 +5,10 @@
         $user = new User($username);
         if (!$user->exists()) {
             Redirect::to('./errors/404.php');
-            Session::flash('404','Username does not exist');
+            // Session::flash('404','Username does not exist');
         } else {
             $data = $user->data();
-        }
+        }      
 ?>
 
 <html>
