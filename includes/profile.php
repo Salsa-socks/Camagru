@@ -5,6 +5,7 @@
         $user = new User($username);
         if (!$user->exists()) {
             Redirect::to('./errors/404.php');
+            Session::flash('404','Username does not exist');
         } else {
             $data = $user->data();
         }
@@ -68,7 +69,7 @@
                 </div>
             <script src="./js/modal.js"></script>
             <script src="./js/cam.js"></script>
-
+            <!-- <script src="./js/noRclick.js"></script> -->
         </div>
     </body>
 </html>

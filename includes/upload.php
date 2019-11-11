@@ -20,7 +20,6 @@
     file_put_contents($imagepath, $imgdecode);
    }
 
-   // make image file for overlay
    if(isset($layer2)){
       $overlayimage = "overlay".time().".png";
       $overlaypath = "./usergallery/".$overlayimage;
@@ -29,11 +28,10 @@
       $imgdecode = base64_decode($imageurl);
       file_put_contents($overlaypath, $imgdecode);
    }
-   // merge images
    if(isset($layer1) && isset($layer2)){
          $dest = imagecreatefrompng($imagepath);
          $src = imagecreatefrompng($overlaypath);
-         imagecopyresampled($dest, $src, 0, 0, 0, 0, 50, 50, 100, 100); //size of overl
+         imagecopyresampled($dest, $src, 0, 0, 0, 0, 640, 480, 500, 380); //size of overl
          imagepng($dest, $imagepath);
          imagedestroy($dest);
          imagedestroy($src);
