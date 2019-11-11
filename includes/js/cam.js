@@ -25,7 +25,7 @@
     });
 
     document.getElementById('capture').addEventListener('click', function() {
-        context.drawImage(video, 0, 0, 500, 380);
+        context.drawImage(video, 0, 0, 500, 375);
         overlaycontext.drawImage(overlay, 0, 0, 400, 300);
         document.getElementById("canvas").style.zIndex = "1";
         document.getElementById("sticker").style.zIndex = "2";

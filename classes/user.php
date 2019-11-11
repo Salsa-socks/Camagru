@@ -26,6 +26,12 @@
             }
         }
 
+        public function upload($fields = array()) {
+            if (!$this->_db->insert('images', $fields)) {
+                throw new Exception('There was a problem uploading your images.');
+            }
+        }
+
         public function update($fields = array(), $id = null) {
             if (!$id && $this->isLoggedin()) {
                 $id = $this->data()->$id;

@@ -3,12 +3,14 @@
 
         $username = Input::get('user');
         $user = new User($username);
+        $images = DB::getInstance('images');
+        
         if (!$user->exists()) {
             Redirect::to('./errors/404.php');
             // Session::flash('404','Username does not exist');
         } else {
             $data = $user->data();
-        }      
+        }
 ?>
 
 <html>
@@ -45,8 +47,8 @@
                             <a href ="#" id="capture" class="capturebtn">Take Photo</a>
                             <canvas id="sticker" width="400" height="300" style="position: absolute;top: 0px;left: 0px;z-index: 2;width: 100%;"></canvas>
                             <canvas id="canvas" width="500" height="380" ></canvas>
-                            <button type="button" style="font-size: 1.6vh;" class="uploadbtn" onclick="camReset()">Retake photo</button>
-                            <a href ="#" id="upload" class="uploadbtn">Upload</a>
+                            <button type="button" style="font-size: 1.8vh;" class="uploadbtn" onclick="camReset()">Retake</button>
+                            <a href ="#" id="upload" class="uploadbtn">Post</a>
                         </div>
                         <div class="stickers">
                         <h3 style="margin: 0;">Stickers</h3>

@@ -9,7 +9,7 @@
    $layer1 = $_POST["baseimage"];
    $layer2 = $_POST["overlayimage"];
 
-   echo $layer1;
+   // echo $layer1;
 
    if(!empty($layer1) && !empty($username)){
     $baseimage = $username.time().".png";
@@ -37,21 +37,17 @@
          imagedestroy($src);
          unlink($overlaypath);
    }
-   if (isset($layer1) && isset($layer2)) {
-      try {
-         $sql = DB::insert('images',array(
-            'imagename' => $baseimage,
-            'username' => $username,
-            'postdate' => date('Y-m-d H:i:s')
-         ));
-         alert('Image posted, please refresh :)');
-      } catch (Exception $e) {
-         alert('unable to post image');
-      
-   }
    
+   if ($user) {
+      $user->upload(array(
+         'imagename' => $baseimage,
+         'username' => $username,
+         'postdate' => date('Y-m-d H:i:s')
+      ));
+   }
+   else {
+      echo 'oops';
+   }
+        
 
-
-
-   return 0;
 ?>
