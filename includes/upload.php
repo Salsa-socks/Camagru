@@ -35,7 +35,7 @@
          imagepng($dest, $imagepath);
          imagedestroy($dest);
          imagedestroy($src);
-         // unlink($overlaypath);
+         unlink($overlaypath);
    }
    
    if ($user) {
