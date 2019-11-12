@@ -59,8 +59,6 @@
         overlay.src = "../includes/stickers/sticker5.png";
     });
 
-
-
     document.getElementById('upload').addEventListener('click', function() {
         var layer1 = canvas.toDataURL('image/png');
         var layer2 = overlaycanvas.toDataURL('image/png');

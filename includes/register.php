@@ -43,7 +43,8 @@
               'salt' => $salt,
               'joined' => date('Y-m-d H:i:s'),
               'group' => '1',
-              'emailconfirm' => '0'
+              'emailconfirm' => '0',
+              'notify' => '1',
             ));
             $email = Input::get('email');
             $username = Input::get('username');

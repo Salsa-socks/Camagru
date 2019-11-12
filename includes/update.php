@@ -39,12 +39,14 @@
                 if($validation->passed()) {
                     try {
                         $salt = Hash::salt(32);
+                        $notify = (Input::get('notify')) ? 1 : 0;
                         $user->update(array(
                             'name' => Input::get('name'),
                             'username' => Input::get('username'),
                             'email' => Input::get('email'),
                             'password' => Hash::make(Input::get('password_new'), $salt),
-                            'salt' => $salt, 
+                            'salt' => $salt,
+                            'notify' => $notify, 
                         ),$id);
                         Session::flash('home', 'Your details have been updated');
                         Redirect::to('profile.php');
@@ -106,6 +108,9 @@
                         <label for="name">Repeat Password</label>
                         <input type="password" name="email" value="" required=""  oninvalid="setCustomValidity('Ensure Passwords match and it contains at least 1 uppercase, 1 special character and is at least 8 characters')">
                         <br/>
+                        <p style="font-size:1.6vw">Uncheck the box if you do not want notifications</p>
+                        <label for="notify">Notify me</label>
+                        <input type="checkbox" name="notify" checked value=1>
                         <h3>Click "Update" to update your details</h3>
                         <input type="submit" value="Update" style="font-size: 2vh; border-radius: 0px !important; background: rgb(58, 193, 255); font-family: Oswald; width: 18vh; height: 5%; color: white;">
                         <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
