@@ -47,7 +47,7 @@
       ));
    }
    else {
-      echo 'oops';
+      echo 'failed to post image';
    }
         
 
