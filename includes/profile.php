@@ -3,14 +3,23 @@
 
         $username = Input::get('user');
         $user = new User($username);
-        $images = Input::get('images');
-        
+        try {
+            $conn = new PDO('mysql:host='.Config::get('mysql/host').';dbname='.Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // echo "connected";
+        } catch(PDOException $e) {
+            echo "failed to connect";
+        }
+        $sql = "SELECT * FROM `images`";
+        $res = $conn->prepare($sql);
+        $res->execute();
+
         if (!$user->exists()) {
             Redirect::to('./errors/404.php');
             // Session::flash('404','Username does not exist');
         } else {
             $data = $user->data();
-        }
+        } 
 ?>
 
 <html>
@@ -33,9 +42,6 @@
                 <a href= "update.php"><i class="fas fa-user-circle"></i></a>
                 <button id="myBtn" style="color: white; border: none; cursor: pointer; background: none; width: 0; margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
             </header>
- 
-
-
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -70,8 +76,15 @@
             </div> 
                 <div class="profile">
                     <div class="usern"><h3 style="text-align: left; font-size: 3vh"> Username: <?php echo escape($data->username); ?></h3></div>
-                    <div class="unamed"><h2 style="text-align: left;font-size: 2vh; padding-top: 1%"> Name: <?php echo escape($data->name);?> </h2></div>  
+                    <div class="unamed"><h2 style="text-align: left;font-size: 2vh; padding-top: 2%"> Name: <?php echo escape($data->name);?> </h2></div>  
                 </div>
+                <?php
+                    while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<div id='imgsec'>";
+                        echo "<img src='" .$row['imgaddress']."' style='width: 40%;border: 2px solid black';>";
+                        echo "</div>";
+                    }
+                ?>
             <script src="./js/modal.js"></script>
             <script src="./js/cam.js"></script>
             <!-- <script src="./js/noRclick.js"></script> -->
