@@ -35,14 +35,15 @@
          imagepng($dest, $imagepath);
          imagedestroy($dest);
          imagedestroy($src);
-         unlink($overlaypath);
+         // unlink($overlaypath);
    }
    
    if ($user) {
       $user->upload(array(
          'imagename' => $baseimage,
          'username' => $username,
-         'postdate' => date('Y-m-d H:i:s')
+         'postdate' => date('Y-m-d H:i:s'),
+         'imgaddress' => $overlaypath
       ));
    }
    else {

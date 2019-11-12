@@ -3,7 +3,7 @@
 
         $username = Input::get('user');
         $user = new User($username);
-        $images = DB::getInstance('images');
+        $images = Input::get('images');
         
         if (!$user->exists()) {
             Redirect::to('./errors/404.php');
@@ -33,6 +33,9 @@
                 <a href= "update.php"><i class="fas fa-user-circle"></i></a>
                 <button id="myBtn" style="color: white; border: none; cursor: pointer; background: none; width: 0; margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
             </header>
+ 
+
+
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
