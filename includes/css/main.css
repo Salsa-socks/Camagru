@@ -1,8 +1,8 @@
 body {
     font-family: 'Oswald', sans-serif;
-    overflow: hidden;
     background-image: url(../img/back.png);
     background-size: cover;
+    background-attachment: fixed;
 }
 
 header {

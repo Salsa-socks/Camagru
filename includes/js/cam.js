@@ -65,7 +65,7 @@
         const url = "../includes/upload.php";
         var xhttp = new XMLHttpRequest();
         var values = "baseimage=" + layer1 + "&overlayimage=" + layer2;
-        alert("Your image has been posted, please refresh");
+        alert("Your image has been posted\nPlease refresh");
         xhttp.open("POST", url, true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.onreadystatechange = function() {
