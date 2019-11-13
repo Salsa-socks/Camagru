@@ -80,8 +80,9 @@
                 </div>
                 <?php
                     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<div id='imgsec'>";
+                        echo "<div id='imgsec'  style='width: 90%; margin: 0 auto;'>";
                         echo "<img src='" .$row['imgaddress']."' style='width: 40%;border: 2px solid black';>";
+                        echo "<p style='color: rgb(58, 193, 255);margin: 1% auto; width: 40%;'> {$row['username']}</p>";
                         echo "</div>";
                     }
                 ?>
