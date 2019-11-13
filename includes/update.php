@@ -50,14 +50,6 @@
                         ),$id);
                         Session::flash('home', 'Your details have been updated');
                         Redirect::to('profile.php');
-                        $email = Input::get('email');
-                        $username = Input::get('username');
-                        $subject = 'Update Details';
-                        $message = 'Your details have been updated. ';
-                        $headers = 'From:noreply@camagru.co.bnkosi' . "\r\n";
-                        $headers .= "MIME-Version: 1.0" . "\r\n";
-                        $headers .= "Content-Type:text/html;charset=UTF-8". "\r\n";
-                        mail($email, $subject, $message, $headers);
 
                     } catch(Exception $e) {
                         die($e->getMessage());

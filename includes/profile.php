@@ -10,7 +10,7 @@
         } catch(PDOException $e) {
             echo "failed to connect";
         }
-        $sql = "SELECT * FROM `images`";
+        $sql = "SELECT * FROM `images` ORDER BY `images`.`postdate` DESC";
         $res = $conn->prepare($sql);
         $res->execute();
 
