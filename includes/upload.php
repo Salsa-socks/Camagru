@@ -9,6 +9,8 @@
    $layer1 = $_POST["baseimage"];
    $layer2 = $_POST["overlayimage"];
 
+   echo $layer1;
+
    if(!empty($layer1) && !empty($username)){
     $baseimage = $username.time().".png";
     $imagepath = "./usergallery/".$baseimage;

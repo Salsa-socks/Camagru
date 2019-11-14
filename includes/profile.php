@@ -91,10 +91,10 @@
                             echo "<p style='color: rgb(58, 193, 255);margin: 1% auto; width: 40%;'> {$row['username']}</p>";
                             echo "<img src='" .$row['imgaddress']."' style='width: 40%;border: 2px solid black; margin-top: 0%;'>";
                         echo "</div>";
-                        // echo "<form action='' id='commentform' class='comform'>";
-                        //     echo "<textarea rows='4' cols='50' name='comment' id='comment' form='comform'>Enter Your Comment</textarea> </br>";
-                        //     echo "<input type='submit' id='comsub' class='submitbtn'>";
-                        // echo "</form>";
+                        echo "<form action='' id='commentform' class='comform'>";
+                            echo "<textarea rows='4' cols='50' name='comment' id='comment' form='comform'>Enter Your Comment</textarea> </br>";
+                            echo "<input type='submit' id='comsub' class='submitbtn'>";
+                        echo "</form>";
                         echo "<div class='symbolbox'>";
                             echo "<i class='fas fa-hand-spock' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>";
                             echo "<i class='fas fa-comment' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>";
@@ -107,7 +107,6 @@
                                 echo $rowc['comment'];
                             echo "</div>";
                         }
-                        
                     }
                 ?>
             <script src="./js/modal.js"></script>
