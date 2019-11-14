@@ -7,12 +7,10 @@ if (Session::exists('forgotpw')) {
 
     if (Input::exists()) {
         if (Token::check(Input::get('token'))) {
-            echo"about to validate";
             $validate = new Validate();
             $validation = $validate->check($_POST, array(
                 'username' => array('required' => true)
             ));
-            echo "about to find un";
 
             if ($validation->passed()) {
                 $user = new User($username = Input::get('username'));

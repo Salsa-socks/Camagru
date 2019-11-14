@@ -3,23 +3,30 @@
 
         $username = Input::get('user');
         $user = new User($username);
+        $id= $user->data()->id;
         try {
             $conn = new PDO('mysql:host='.Config::get('mysql/host').';dbname='.Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // echo "connected";
         } catch(PDOException $e) {
-            echo "failed to connect";
+            echo "failed to connect o server";
         }
         $sql = "SELECT * FROM `images` ORDER BY `images`.`postdate` DESC";
         $res = $conn->prepare($sql);
         $res->execute();
 
+        $sqlc = "SELECT * FROM `comments` ORDER BY `comments`.`postdate` DESC";
+        $res2 = $conn->prepare($sqlc);
+        $res2->execute(); 
+
         if (!$user->exists()) {
             Redirect::to('./errors/404.php');
-            // Session::flash('404','Username does not exist');
+            Session::flash('404','you need to login');
         } else {
             $data = $user->data();
-        } 
+        }
+
+
 ?>
 
 <html>
@@ -44,7 +51,7 @@
             </header>
             <div id="myModal" class="modal">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <span id="refresh" class="close">&times;</span>
                     <h2>Hi, take a pic and upload it!</h2>
                     <p>Make sure you click allow to use your cam, when you're 
                         done taking your pic, add a filter and upload it </p>
@@ -57,7 +64,7 @@
                             <canvas id="sticker" width="400" height="300" style="position: absolute;top: 0px;left: 0px;z-index: 2;width: 100%;"></canvas>
                             <canvas id="canvas" width="500" height="380" ></canvas>
                             <button type="button" style="font-size: 1.8vh;" class="uploadbtn" onclick="camReset()">Retake</button>
-                            <a href ="#" id="upload" class="uploadbtn">Post</a>
+                            <a href="#" id="upload" class="uploadbtn">Post</a>
                         </div>
                         <div class="stickers">
                         <h3 style="margin: 0;">Stickers</h3>
@@ -80,10 +87,27 @@
                 </div>
                 <?php
                     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<div id='imgsec'  style='width: 90%; margin: 0 auto;'>";
-                        echo "<p style='color: rgb(58, 193, 255);margin: 1% auto; width: 40%;'> {$row['username']}</p>";
-                        echo "<img src='" .$row['imgaddress']."' style='width: 40%;border: 2px solid black; margin-top: 0%;'>";
+                        echo "<div id='imgsec'>";
+                            echo "<p style='color: rgb(58, 193, 255);margin: 1% auto; width: 40%;'> {$row['username']}</p>";
+                            echo "<img src='" .$row['imgaddress']."' style='width: 40%;border: 2px solid black; margin-top: 0%;'>";
                         echo "</div>";
+                        // echo "<form action='' id='commentform' class='comform'>";
+                        //     echo "<textarea rows='4' cols='50' name='comment' id='comment' form='comform'>Enter Your Comment</textarea> </br>";
+                        //     echo "<input type='submit' id='comsub' class='submitbtn'>";
+                        // echo "</form>";
+                        echo "<div class='symbolbox'>";
+                            echo "<i class='fas fa-hand-spock' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>";
+                            echo "<i class='fas fa-comment' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>";
+                            echo "<br/>";
+                        echo "</div>";
+                        while ($rowc = $res2->fetch(PDO::FETCH_ASSOC)) {
+                            echo "<div id='comsec'>";
+                                echo "Comment from: ".$rowc['poster'];
+                                echo "<br/>";
+                                echo $rowc['comment'];
+                            echo "</div>";
+                        }
+                        
                     }
                 ?>
             <script src="./js/modal.js"></script>

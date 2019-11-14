@@ -10,7 +10,8 @@
         place4 = document.getElementById('place4'),
         place5 = document.getElementById('place5'),
         overlay = document.getElementById('stick'),
-        vendorURL = window.URL || window.webkitURL;
+        con = 0;
+    // vendorURL = window.URL || window.webkitURL;
 
     navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
@@ -25,6 +26,7 @@
     });
 
     document.getElementById('capture').addEventListener('click', function() {
+        con = 1;
         context.drawImage(video, 0, 0, 500, 375);
         overlaycontext.drawImage(overlay, 0, 0, 400, 300);
         document.getElementById("canvas").style.zIndex = "1";
@@ -60,21 +62,24 @@
     });
 
     document.getElementById('upload').addEventListener('click', function() {
-        var layer1 = canvas.toDataURL('image/png');
-        var layer2 = overlaycanvas.toDataURL('image/png');
-        const url = "../includes/upload.php";
-        var xhttp = new XMLHttpRequest();
-        var values = "baseimage=" + layer1 + "&overlayimage=" + layer2;
-        alert("Your image has been posted\nPlease refresh");
-        xhttp.open("POST", url, true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.onreadystatechange = function() {
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                var response = xhttp.responseText;
-                console.log(response);
+        if (con == 1) {
+            var layer1 = canvas.toDataURL('image/png');
+            var layer2 = overlaycanvas.toDataURL('image/png');
+            const url = "../includes/upload.php";
+            var xhttp = new XMLHttpRequest();
+            var values = "baseimage=" + layer1 + "&overlayimage=" + layer2;
+            xhttp.open("POST", url, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    var response = xhttp.responseText;
+                    console.log(response);
+                }
             }
+            xhttp.send(values);
+        } else {
+            alert("no picture has been taken");
         }
-        xhttp.send(values);
     });
 
 })();

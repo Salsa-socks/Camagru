@@ -15,6 +15,39 @@ header {
     z-index: 99;
 }
 
+#imgsec {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#comsec {
+    width: 36%;
+    margin: 0 auto;
+    background: white;
+    border: .1vh solid rgb(56, 56, 56);
+    padding-left: 0.5%;
+}
+
+textarea {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 1.8vh;
+    border: 0.2vw solid black;
+}
+
+.comform {
+    width: 36%;
+    margin: 1% auto;
+}
+
+.submitbtn {
+    width: 25%;
+    background: #3bc1ff;
+    color: white;
+    margin-top: 1%;
+    height: 29px;
+}
+
 h2 {
     margin-left: auto;
     margin-right: auto;
@@ -124,6 +157,11 @@ img {
 
 header a .fas:hover {
     color: rgb(102, 212, 255);
+}
+
+.symbolbox {
+    width: 36%;
+    margin: 1% auto;
 }
 
 header a .fas:click {
