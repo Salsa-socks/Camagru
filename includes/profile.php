@@ -7,9 +7,8 @@
         try {
             $conn = new PDO('mysql:host='.Config::get('mysql/host').';dbname='.Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // echo "connected";
         } catch(PDOException $e) {
-            echo "failed to connect o server";
+            echo "failed to connect to server";
         }
         $sql = "SELECT * FROM `images` ORDER BY `images`.`postdate` DESC";
         $res = $conn->prepare($sql);
@@ -25,8 +24,6 @@
         } else {
             $data = $user->data();
         }
-
-
 ?>
 
 <html>
@@ -77,6 +74,20 @@
                                     <td><img id="place5" src="./stickers/s5ph.png" style="width: 70%;"></td> 
                                 </tr>
                             </table>
+                            <br/>
+                            <div id="mypicupload">
+                                <form method="post" action="">
+                                    <input type="hidden" name="size" value="10000000">
+                                    <div>
+                                        <label for="upimage" class="upbtn1">Choose a file to upload</label>
+                                        <input type="file" name="upimage">
+                                    </div>
+                                    <div>
+                                    <label for="picup" class="upbtn1">Click upload to upload it</label>
+                                        <input type="submit" name="picup" value="Upload Image" style="display: none;">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -87,27 +98,32 @@
                 </div>
                 <?php
                     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<div id='imgsec'>";
-                            echo "<p style='color: rgb(58, 193, 255);margin: 1% auto; width: 40%;'> {$row['username']}</p>";
-                            echo "<img src='" .$row['imgaddress']."' style='width: 40%;border: 2px solid black; margin-top: 0%;'>";
-                        echo "</div>";
-                        echo "<form action='' id='commentform' class='comform'>";
-                            echo "<textarea rows='4' cols='50' name='comment' id='comment' form='comform'>Enter Your Comment</textarea> </br>";
-                            echo "<input type='submit' id='comsub' class='submitbtn'>";
-                        echo "</form>";
-                        echo "<div class='symbolbox'>";
-                            echo "<i class='fas fa-hand-spock' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>";
-                            echo "<i class='fas fa-comment' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>";
-                            echo "<br/>";
-                        echo "</div>";
+                        ?>
+                        <div id='imgsec'>
+                            <p style='color: rgb(58, 193, 255);margin: 1% auto; width: 40%;'><?php echo $row['username']; ?></p>
+                            <img src='<?php echo $row['imgaddress'];?>' style='width: 40%;border: 2px solid black; margin-top: 0%;'>
+                        </div>
+                        <form action='' id='commentform' class='comform'>
+                            <textarea rows='4' cols='50' name='comment' id='comment' form='comform'>Enter Your Comment</textarea> </br>
+                            <input type='submit' id='comsub' class='submitbtn'>
+                        </form>
+                        <div class='symbolbox'>
+                            <i class='fas fa-hand-spock' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>
+                            <i class='fas fa-comment' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>
+                            <br/>
+                        </div>
+                        <?php
                         while ($rowc = $res2->fetch(PDO::FETCH_ASSOC)) {
-                            echo "<div id='comsec'>";
-                                echo "Comment from: ".$rowc['poster'];
-                                echo "<br/>";
-                                echo $rowc['comment'];
-                            echo "</div>";
+                        ?>
+                            <div id='comsec'>
+                                Comment from: <?php echo $rowc['poster']; ?>
+                                <br/>
+                                <?php echo $rowc['comment'];?>
+                            </div>
+                        <?php
                         }
                     }
+                    ?>
                 ?>
             <script src="./js/modal.js"></script>
             <script src="./js/cam.js"></script>

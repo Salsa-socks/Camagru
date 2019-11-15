@@ -148,6 +148,24 @@ span.psw {
     padding-top: 2%;
 }
 
+input[type="file"] {
+    display: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.upbtn1 {
+    display: inline-block;
+    cursor: pointer;
+    background: #39c1ff;
+    color: white;
+    margin: 1%;
+    width: 50%;
+    padding: 2%;
+}
+
 img {
     margin: auto;
     margin-top: 3%;
