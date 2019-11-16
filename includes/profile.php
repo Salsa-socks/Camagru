@@ -14,15 +14,44 @@
         $res = $conn->prepare($sql);
         $res->execute();
 
-        $sqlc = "SELECT * FROM `comments` ORDER BY `comments`.`postdate` DESC";
-        $res2 = $conn->prepare($sqlc);
-        $res2->execute(); 
-
         if (!$user->exists()) {
             Redirect::to('./errors/404.php');
             Session::flash('404','you need to login');
         } else {
             $data = $user->data();
+        }
+
+        if (isset($_POST['picup'])) {
+            
+            $file = $_FILES['upimage'];
+            $fileName = $file['name'];
+            $fileTmpName = $file['tmp_name'];
+            if ($fileTmpName)
+            {
+                list($width, $height) = getimagesize($fileTmpName);
+
+
+                $tmp = imagecreatetruecolor(500, 375);
+
+                $tmp_path = "./usergallery/tmp/tmp.png";
+
+                $fileExt = explode('.', $fileName);
+                $fileActualExt = strtolower(end($fileExt));
+
+                switch($fileActualExt) {
+                    case "jpg":
+                        $source = imagecreatefromjpeg($fileTmpName);
+                        break;
+                    case "jpeg":
+                        $source = imagecreatefromjpeg($fileTmpName);
+                        break;
+                    case "png":
+                        $source = imagecreatefrompng($fileTmpName);
+                        break;
+                }
+                imagecopyresampled($tmp , $source , 0, 0, 0 , 0, 500 , 375 , $width , $height );
+                imagepng($tmp, $tmp_path, 9);
+            }         
         }
 ?>
 
@@ -36,6 +65,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <script src="/instaclone/includes/js/feed.js"></script>
     </head>
     <body>
         <div class="fade-in">
@@ -76,22 +107,23 @@
                             </table>
                             <br/>
                             <div id="mypicupload">
-                                <form method="post" action="">
-                                    <input type="hidden" name="size" value="10000000">
+                                <form method="post" action="" enctype="multipart/form-data">
+                                    <input type="hidden" name="file">
                                     <div>
                                         <label for="upimage" class="upbtn1">Choose a file to upload</label>
-                                        <input type="file" name="upimage">
+                                        <input type="file" name="upimage" id="upimage">
                                     </div>
                                     <div>
                                     <label for="picup" class="upbtn1">Click upload to upload it</label>
-                                        <input type="submit" name="picup" value="Upload Image" style="display: none;">
+                                        <button type="submit" name="picup" id="picup" style="display: none;">
                                     </div>
                                 </form>
+                                <a href="#" id="testbtn" class="upbtn1" onclick="uploader()">View Upload</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
                 <div class="profile">
                     <div class="usern"><h3 style="text-align: left; font-size: 3vh"> Username: <?php echo escape($data->username); ?></h3></div>
                     <div class="unamed"><h2 style="text-align: left;font-size: 2vh; padding-top: 2%"> Name: <?php echo escape($data->name);?> </h2></div>  
@@ -103,28 +135,29 @@
                             <p style='color: rgb(58, 193, 255);margin: 1% auto; width: 40%;'><?php echo $row['username']; ?></p>
                             <img src='<?php echo $row['imgaddress'];?>' style='width: 40%;border: 2px solid black; margin-top: 0%;'>
                         </div>
-                        <form action='' id='commentform' class='comform'>
-                            <textarea rows='4' cols='50' name='comment' id='comment' form='comform'>Enter Your Comment</textarea> </br>
-                            <input type='submit' id='comsub' class='submitbtn'>
-                        </form>
                         <div class='symbolbox'>
                             <i class='fas fa-hand-spock' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>
                             <i class='fas fa-comment' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>
                             <br/>
                         </div>
+                        <div class="comsec" style="width: 36%; margin: 0 auto;">
+                            <input type=text id="comment-input-<?=$row['id']?>" style="width: 100%;"/>
+                            <input type="button" value="submit" onclick="submit_comment(<?=$row['id']?>)" style="font-size: 1.5vw; width: 20%; background: #39c1ff; font-family: Oswald;color: white;"/>
                         <?php
-                        while ($rowc = $res2->fetch(PDO::FETCH_ASSOC)) {
+                            $fetch_comments = "SELECT * FROM `comments` WHERE `imageid`=? ORDER BY `comments`.`postdate` DESC";
+                            $res2 = $conn->prepare($fetch_comments);
+                            $res2->execute(array($row['id'])); 
+                            while ($comment = $res2->fetch(PDO::FETCH_ASSOC))
+                            {
                         ?>
-                            <div id='comsec'>
-                                Comment from: <?php echo $rowc['poster']; ?>
-                                <br/>
-                                <?php echo $rowc['comment'];?>
-                            </div>
+                                <div class="thecomments"><?=$comment['comment']?></div>
                         <?php
-                        }
+                            }
+                        ?>
+                        </div>
+                        <?php
                     }
                     ?>
-                ?>
             <script src="./js/modal.js"></script>
             <script src="./js/cam.js"></script>
             <!-- <script src="./js/noRclick.js"></script> -->

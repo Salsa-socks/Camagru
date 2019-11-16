@@ -32,6 +32,12 @@
             }
         }
 
+        public function uploadc($fields = array()) {
+            if (!$this->_db->insert('comments', $fields)) {
+                throw new Exception('There was a problem uploading your comment.');
+            }
+        }
+
         public function update($fields = array(), $id = null) {
             if (!$id && $this->isLoggedin()) {
                 $id = $this->data()->$id;

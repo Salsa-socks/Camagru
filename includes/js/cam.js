@@ -11,7 +11,6 @@
         place5 = document.getElementById('place5'),
         overlay = document.getElementById('stick'),
         con = 0;
-    // vendorURL = window.URL || window.webkitURL;
 
     navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
@@ -31,9 +30,8 @@
         overlaycontext.drawImage(overlay, 0, 0, 400, 300);
         document.getElementById("canvas").style.zIndex = "1";
         document.getElementById("sticker").style.zIndex = "2";
-        // console.log(canvas.toDataURL());
-        // console.log(overlaycanvas.toDataURL());
     });
+
 
     place1.addEventListener('click', function() {
         document.getElementById("stick").style.visibility = "visible";
@@ -83,6 +81,21 @@
     });
 
 })();
+
+function uploader() {
+    var upload = new Image(),
+        canvas = document.getElementById('canvas'),
+        context = canvas.getContext('2d');
+
+    upload.src = "../includes/usergallery/tmp/tmp.png";
+    upload.onerror = function() {
+        console.log("I know about the above error. \n This is how I check if there is a user uploaded image");
+    };
+    upload.onload = function() {
+        context.drawImage(upload, 0, 0, 500, 375);
+        document.getElementById("canvas").style.zIndex = "1";
+    };
+}
 
 function camReset() {
     document.getElementById("canvas").style.zIndex = "-1";
