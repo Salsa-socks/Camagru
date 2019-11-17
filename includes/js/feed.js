@@ -17,5 +17,4 @@ function submit_comment(id) {
         "id=" + id +
         "&comment=" + encodeURIComponent(comment)
     );
-    console.log(comment);
 }

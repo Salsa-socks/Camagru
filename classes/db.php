@@ -44,6 +44,16 @@
             return $this;
         }
         
+        public function get_property($property,$table, $where) {
+            return $this->action('SELECT ' . $property , $table, $where)->_results;
+        }
+
+        public function get_like_id($liker_id, $i_id) {
+            $eq = '=';
+            $sql = "SELECT `id` FROM likes WHERE likerid {$eq} {$liker_id} AND imageid {$eq} {$i_id} "; 
+            return $this->query($sql)->_results;
+        }
+
         public function action($action, $table, $where = array()) {
             if(count($where) == 3) {
                 $operators = array('=', '>', '<', '>=', '<=');

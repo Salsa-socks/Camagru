@@ -1,6 +1,10 @@
 <?php
     require_once '../core/init.php';
 
+    if (Session::exists('profile')) {
+        echo '<p>' . Session::flash('profile') . '</p>';
+    }
+
         $username = Input::get('user');
         $user = new User($username);
         $id= $user->data()->id;
@@ -65,7 +69,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+        <script src="/instaclone/includes/js/like.js"></script>
         <script src="/instaclone/includes/js/feed.js"></script>
     </head>
     <body>
@@ -128,6 +132,7 @@
                     <div class="usern"><h3 style="text-align: left; font-size: 3vh"> Username: <?php echo escape($data->username); ?></h3></div>
                     <div class="unamed"><h2 style="text-align: left;font-size: 2vh; padding-top: 2%"> Name: <?php echo escape($data->name);?> </h2></div>  
                 </div>
+
                 <?php
                     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
                         ?>
@@ -135,15 +140,30 @@
                             <p style='color: rgb(58, 193, 255);margin: 1% auto; width: 40%;'><?php echo $row['username']; ?></p>
                             <img src='<?php echo $row['imgaddress'];?>' style='width: 40%;border: 2px solid black; margin-top: 0%;'>
                         </div>
+
                         <div class='symbolbox'>
-                            <i class='fas fa-hand-spock' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>
-                            <i class='fas fa-comment' style='padding-right: 4%; color: rgb(58, 193, 255); font-size: 2.5vw'></i>
+                            <form action="../functions/like.php" method="post">
+                            <input type="submit" value="like">
+                            <input type="hidden" name="liker" value="<?php echo $id?>">
+                            <input type="hidden" name="username" value="<?php echo $row['username'] ?>">
+                            <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+                            </form>
                             <br/>
                         </div>
+
                         <div class="comsec" style="width: 36%; margin: 0 auto;">
                             <input type=text id="comment-input-<?=$row['id']?>" style="width: 100%;"/>
                             <input type="button" value="submit" onclick="submit_comment(<?=$row['id']?>)" style="font-size: 1.5vw; width: 20%; background: #39c1ff; font-family: Oswald;color: white;"/>
                         <?php
+                            $fetch_likes = "SELECT * FROM `likes` WHERE imageid=? ORDER BY `likes`.`postdate` DESC";
+                            $res3 = $conn->prepare($fetch_likes);
+                            $res3->execute(array($row['id']));
+                            while ($rowl = $res3->fetch(PDO::FETCH_ASSOC)) {
+                            ?>
+                                <div class="likes" style="font-size:1.4vw"><?=$rowl['userid'];?> likes your picture</div>
+                                <br/>
+                            <?php
+                            }
                             $fetch_comments = "SELECT * FROM `comments` WHERE `imageid`=? ORDER BY `comments`.`postdate` DESC";
                             $res2 = $conn->prepare($fetch_comments);
                             $res2->execute(array($row['id'])); 
