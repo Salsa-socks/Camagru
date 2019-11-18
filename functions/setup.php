@@ -35,13 +35,13 @@
 	$stmt->execute();
 
 	$sql = 'CREATE TABLE IF NOT EXISTS `groups` (
-		`user_id` INT AUTO_INCREMENT PRIMARY KEY,
+		`id` INT AUTO_INCREMENT PRIMARY KEY,
 		`group` VARCHAR(50) NOT NULL)';
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute();
 
 	$sql = 'CREATE TABLE IF NOT EXISTS users_session (
-		id INT AUTO_INCREMENT PRIMARY KEY,
+		`user_id` INT AUTO_INCREMENT PRIMARY KEY,
 		`session` INT NOT NULL,
 		hash VARCHAR(64) NOT NULL)';
 	$stmt = $pdo->prepare($sql);
