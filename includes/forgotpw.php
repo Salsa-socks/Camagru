@@ -22,7 +22,7 @@ if (Session::exists('forgotpw')) {
                     $email = $user->data()->email;
                     $subject = 'Forgot password';
                     $message = 'Please click the link to change your password:';
-                    $message .= "<a href='http://localhost:8080/instaclone/includes/changepw.php?user=$username&salt=$salt'>Change Password</a>";
+                    $message .= "<a href='http://localhost:8080/Camagru/includes/changepw.php?user=$username&salt=$salt'>Change Password</a>";
                     $headers = 'From:noreply@camagru.co.bnkosi' . "\r\n";
                     $headers .= "MIME-Version: 1.0" . "\r\n";
                     $headers .= "Content-Type:text/html;charset=UTF-8". "\r\n";

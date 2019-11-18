@@ -69,8 +69,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script src="/instaclone/includes/js/like.js"></script>
-        <script src="/instaclone/includes/js/feed.js"></script>
+        <script src="/Camagru/includes/js/like.js"></script>
+        <script src="/Camagru/includes/js/feed.js"></script>
     </head>
     <body>
         <div class="fade-in">

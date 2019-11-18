@@ -51,7 +51,7 @@
             $subject = 'Signup | Verification';
             $message = 'Thank you for registerimg. Please click the link to verify your registration:';
             $message .= "\r\n";
-            $message .= "<a href='http://localhost:8080/instaclone/includes/verify.php?user=$username&salt=$salt'>Register Account</a>";
+            $message .= "<a href='http://localhost:8080/Camagru/includes/verify.php?user=$username&salt=$salt'>Register Account</a>";
             $headers = 'From:noreply@camagru.co.bnkosi' . "\r\n";
             $headers .= "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-Type:text/html;charset=UTF-8". "\r\n";

@@ -10,7 +10,7 @@ function submit_comment(id) {
         console.log(request.responseText);
     });
 
-    request.open("POST", "/instaclone/functions/comment.php");
+    request.open("POST", "/Camagru/functions/comment.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     request.send(
