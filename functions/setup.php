@@ -18,7 +18,11 @@
 	$stmt->execute();
 	$sql = 'USE ' . $db;
 	$stmt = $pdo->prepare($sql);
-	$stmt->execute();
+	if ($stmt->execute()) {
+		echo "Database created";
+    } else {
+        echo "nothing, zip zero";
+	}
 
 	$sql = 'CREATE TABLE IF NOT EXISTS users (
 		id INT AUTO_INCREMENT PRIMARY KEY,
@@ -32,20 +36,33 @@
 		notify	TINYINT DEFAULT 0,
 		joined DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)';
 	$stmt = $pdo->prepare($sql);
-	$stmt->execute();
+	if ($stmt->execute()) {
+		echo "users created";
+    } else {
+        echo "nothing, zip zero";
+	}
 
 	$sql = 'CREATE TABLE IF NOT EXISTS `groups` (
 		`id` INT AUTO_INCREMENT PRIMARY KEY,
+		`permissions` TEXT,
 		`group` VARCHAR(50) NOT NULL)';
 	$stmt = $pdo->prepare($sql);
-	$stmt->execute();
+	if ($stmt->execute()) {
+		echo "groups created";
+    } else {
+        echo "nothing, zip zero";
+	}
 
 	$sql = 'CREATE TABLE IF NOT EXISTS users_session (
-		`user_id` INT AUTO_INCREMENT PRIMARY KEY,
-		`session` INT NOT NULL,
-		hash VARCHAR(64) NOT NULL)';
+		id INT AUTO_INCREMENT PRIMARY KEY,
+		`user_id` INT,
+		`hash` VARCHAR(150) NOT NULL)';
 	$stmt = $pdo->prepare($sql);
-	$stmt->execute();
+	if ($stmt->execute()) {
+		echo "Users_session created";
+    } else {
+        echo "nothing, zip zero";
+	}
 
 	$sql = 'CREATE TABLE IF NOT EXISTS images (
 		id INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,16 +71,24 @@
 		imagename VARCHAR(64) NOT NULL,
 		postdate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)';
 	$stmt = $pdo->prepare($sql);
-	$stmt->execute();
+	if ($stmt->execute()) {
+		echo "images created";
+    } else {
+        echo "nothing, zip zero";
+	}
 
 	$sql = 'CREATE TABLE IF NOT EXISTS comments (
 		id INT AUTO_INCREMENT PRIMARY KEY,
 		imageid INT NOT NULL,
-		comment VARCHAR(130) NOT NULL,
+		comment VARCHAR(300) NOT NULL,
 		userid VARCHAR(64) NOT NULL,
 		postdate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)';
 	$stmt = $pdo->prepare($sql);
-	$stmt->execute();
+	if ($stmt->execute()) {
+		echo "Comments created";
+    } else {
+        echo "nothing, zip zero";
+	}
 
 	$sql = 'CREATE TABLE IF NOT EXISTS likes (
 		id INT AUTO_INCREMENT PRIMARY KEY,
@@ -73,7 +98,7 @@
 		postdate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)';
 	$stmt = $pdo->prepare($sql);
 	if ($stmt->execute()) {
-		echo "Database created";
+		echo "likes created";
     } else {
         echo "nothing, zip zero";
 	}

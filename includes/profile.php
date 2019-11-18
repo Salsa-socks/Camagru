@@ -143,7 +143,7 @@
 
                         <div class='symbolbox'>
                             <form action="../functions/like.php" method="post">
-                            <input type="submit" value="like" style="width: 20%; font-size: 1.5vw; background: #39c1ff; color: white; font-family: Oswald;">
+                            <input type="submit" value="like" id="like" style="width: 20%; font-size: 1.5vw; background: #39c1ff; color: white; font-family: Oswald;">
                             <input type="hidden" name="liker" value="<?php echo $id?>">
                             <input type="hidden" name="username" value="<?php echo $row['username'] ?>">
                             <input type="hidden" name="id" value="<?php echo $row['id'] ?>">

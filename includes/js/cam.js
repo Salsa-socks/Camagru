@@ -75,6 +75,7 @@
                 }
             }
             xhttp.send(values);
+            location.reload();
         } else {
             alert("no picture has been taken");
         }
