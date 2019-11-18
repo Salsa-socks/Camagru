@@ -168,7 +168,7 @@
                             $res2->execute(array($row['id']));
                             while ($comment = $res2->fetch(PDO::FETCH_ASSOC)):
                         ?>
-                                <div class="thecomments" style="width: 100%; background: #f3f3f3; margin-top: 2%"><?=$comment['comment']?></div>
+                                <div class="thecomments" style="width: 100%; background: #f3f3f3; margin-top: 2%"><?php echo escape ($comment['comment'])?></div>
                         <?php
                             endwhile;
                         ?>
