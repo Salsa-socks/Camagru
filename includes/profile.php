@@ -160,7 +160,7 @@
                             $res3->execute(array($row['id']));
                             while ($rowl = $res3->fetch(PDO::FETCH_ASSOC)) {
                             ?>
-                                <div class="likes" style="font-size:1.4vw"><?=$rowl['userid'];?> likes your picture</div>
+                                <div class="likes" style="font-size:1.4vw"><?=$rowl['username'];?> likes your picture</div>
                                 <br/>
                             <?php
                             }
