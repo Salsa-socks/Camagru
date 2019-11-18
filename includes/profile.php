@@ -69,7 +69,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script src="/Camagru/includes/js/like.js"></script>
         <script src="/Camagru/includes/js/feed.js"></script>
     </head>
     <body>
@@ -157,8 +156,11 @@
                             $res3 = $conn->prepare($fetch_likes);
                             $res3->execute(array($row['id']));
                             while ($rowl = $res3->fetch(PDO::FETCH_ASSOC)) {
+                                $poster = $user->db()->get_property('username', 'users', array(
+                                    'id', '=' ,$rowl['likerid']
+                                ))[0]->username;
                             ?>
-                                <div class="likes" style="color: #39c1ff; font-size:1.4vw;width: 100%;background: #f3f3f3;margin-top: 3%;"><?=$rowl['username'];?> likes your picture</div>
+                                <div class="likes" style="color: #39c1ff; font-size:1.4vw;width: 100%;background: #f3f3f3;margin-top: 3%;"><?=$poster;?> likes your picture</div>
                             <?php
                             }
                             $fetch_comments = "SELECT * FROM `comments` WHERE `imageid`=? ORDER BY `comments`.`postdate` DESC";

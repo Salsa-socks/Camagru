@@ -75,7 +75,7 @@
                 }
             }
             xhttp.send(values);
-            location.reload();
+            alert("your picture has been uploaded");
         } else {
             alert("no picture has been taken");
         }

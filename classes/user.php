@@ -26,6 +26,10 @@
             }
         }
 
+        public function db() {
+            return $this->_db;
+        }
+
         public function upload($fields = array()) {
             if (!$this->_db->insert('images', $fields)) {
                 throw new Exception('There was a problem uploading your images.');

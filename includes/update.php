@@ -44,12 +44,12 @@
                             'name' => Input::get('name'),
                             'username' => Input::get('username'),
                             'email' => Input::get('email'),
-                            'password' => Hash::make(Input::get('password_new'), $salt),
+                            'password' => Hash::make(Input::get('password'), $salt),
                             'salt' => $salt,
                             'notify' => $notify, 
                         ),$id);
-                        Session::flash('home', 'Your details have been updated');
-                        Redirect::to('profile.php');
+                        Session::flash('home', $password);
+                        Redirect::to('index.php');
 
                     } catch(Exception $e) {
                         die($e->getMessage());
@@ -96,9 +96,9 @@
                         <label for="name">Email Address</label>
                         <input type="text" name="email" value="<?php echo escape($user->data()->email);?>" required="" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Email')">
                         <label for="name">Password</label>
-                        <input type="password" name="email" value="" required="" oninput="setCustomValidity('')"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Password - Password needs to be 8 minimum characters, minimum 1 special character, 1 Capital letter amd 1 number')" autocomplete="off">
+                        <input type="password" name="password" value="" required="" oninput="setCustomValidity('')"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Invalid Password - Password needs to be 8 minimum characters, minimum 1 special character, 1 Capital letter amd 1 number')" autocomplete="off">
                         <label for="name">Repeat Password</label>
-                        <input type="password" name="email" value="" required=""  oninvalid="setCustomValidity('Ensure Passwords match and it contains at least 1 uppercase, 1 special character and is at least 8 characters')">
+                        <input type="password" name="password_again" value="" required=""  oninvalid="setCustomValidity('Ensure Passwords match and it contains at least 1 uppercase, 1 special character and is at least 8 characters')">
                         <br/>
                         <p style="font-size:1.6vw">Uncheck the box if you do not want notifications</p>
                         <label for="notify">Notify me</label>

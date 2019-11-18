@@ -80,7 +80,7 @@
 	$sql = 'CREATE TABLE IF NOT EXISTS comments (
 		id INT AUTO_INCREMENT PRIMARY KEY,
 		imageid INT NOT NULL,
-		comment VARCHAR(300) NOT NULL,
+		comment LONGBLOB NOT NULL,
 		userid VARCHAR(64) NOT NULL,
 		postdate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)';
 	$stmt = $pdo->prepare($sql);
