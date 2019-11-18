@@ -143,14 +143,12 @@
 
                         <div class='symbolbox'>
                             <form action="../functions/like.php" method="post">
-                            <input type="submit" value="like">
+                            <input type="submit" value="like" style="width: 20%; font-size: 1.5vw; background: #39c1ff; color: white; font-family: Oswald;">
                             <input type="hidden" name="liker" value="<?php echo $id?>">
                             <input type="hidden" name="username" value="<?php echo $row['username'] ?>">
                             <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
                             </form>
-                            <br/>
                         </div>
-
                         <div class="comsec" style="width: 36%; margin: 0 auto;">
                             <input type=text id="comment-input-<?=$row['id']?>" style="width: 100%;"/>
                             <input type="button" value="submit" onclick="submit_comment(<?=$row['id']?>)" style="font-size: 1.5vw; width: 20%; background: #39c1ff; font-family: Oswald;color: white;"/>
@@ -160,20 +158,19 @@
                             $res3->execute(array($row['id']));
                             while ($rowl = $res3->fetch(PDO::FETCH_ASSOC)) {
                             ?>
-                                <div class="likes" style="font-size:1.4vw"><?=$rowl['username'];?> likes your picture</div>
-                                <br/>
+                                <div class="likes" style="color: #39c1ff; font-size:1.4vw;width: 100%;background: #f3f3f3;margin-top: 3%;"><?=$rowl['username'];?> likes your picture</div>
                             <?php
                             }
                             $fetch_comments = "SELECT * FROM `comments` WHERE `imageid`=? ORDER BY `comments`.`postdate` DESC";
                             $res2 = $conn->prepare($fetch_comments);
-                            $res2->execute(array($row['id'])); 
-                            while ($comment = $res2->fetch(PDO::FETCH_ASSOC))
-                            {
+                            $res2->execute(array($row['id']));
+                            while ($comment = $res2->fetch(PDO::FETCH_ASSOC)):
                         ?>
-                                <div class="thecomments"><?=$comment['comment']?></div>
+                                <div class="thecomments" style="width: 100%; background: #f3f3f3; margin-top: 2%"><?=$comment['comment']?></div>
                         <?php
-                            }
+                            endwhile;
                         ?>
+                            
                         </div>
                         <?php
                     }
