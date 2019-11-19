@@ -7,12 +7,13 @@ require_once "../core/init.php";
     $email = ($db->get_property('email','users', array('username', '=', $username)))[0]->email;
     $likerid = Input::get("liker");
     $imageid = Input::get('id');
+    $likername = $db->get_property('username', 'users', array('id', '=', $likerid))[0]->username;
 
     if ($lid = $db->get_like_id($likerid, $imageid)) {
         $lid = $lid[0]->id;
         $db->delete('likes', array('id', '=', $lid));
         Session::flash('profile', 'Image Un-liked!');
-        Redirect::to('../includes/profile.php');
+        Redirect::to('../includes/profile.php?start=0&user='.$likername);
     } else {
         if (($db->get_property('notify', 'users', array('username', '=', $username)))[0]->notify) {
             $subject = 'Congrats, dont kill yourself yet, someone likes you';
@@ -31,7 +32,7 @@ require_once "../core/init.php";
             'postdate' => date('Y-m-d H:i:s')
         ));
         Session::flash('profile', 'Image liked!');
-        Redirect::to('../includes/profile.php');
+        Redirect::to('../includes/profile.php?start=0&user='.$likername);
     }
 
 ?>

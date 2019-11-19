@@ -168,6 +168,15 @@
                             <input type="hidden" name="username" value="<?php echo $row['username'] ?>">
                             <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
                             </form>
+                            <?php 
+                            if ($username === $row['username']) {?>
+                                <form action="../functions/delete.php" method="post">
+                                    <input type="hidden" name="username" value="<?php echo escape($data->username); ?>">
+                                    <input type="hidden" name="id" value="<?php echo escape($row['id'])?>">
+                                    <input type="hidden" name="imagename" value="<?php echo escape($row['imagename'])?>">
+                                    <input type="submit" value="Delete" style="width: 20%;font-size: 1.5vw;background: #39c1ff;color: white;font-family: Oswald;">
+                                </form>
+                            <?php } ?>
                         </div>
                         <div class="comsec" style="width: 36%; margin: 0 auto;">
                             <input type=text id="comment-input-<?=$row['id']?>" style="width: 100%;"/>
@@ -205,7 +214,7 @@
                         </div>
                         <?php
                     }
-                    echo '<a href="profile.php?start='.$i.'" style="font-size: 3vw; padding: 1%; background: white">'.$y.'</a>';
+                    echo '<a href="profile.php?start='.$i.'&user='.$username.'" style="font-size: 3vw; padding: 1%; background: white">'.$y.'</a>';
                 }
                 ?>
             <script src="./js/modal.js"></script>
