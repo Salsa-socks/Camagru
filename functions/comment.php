@@ -1,7 +1,6 @@
 <?php
     require_once "../core/init.php";
-    if ($_SESSION['user'])
-    {
+    if ($_SESSION['user']){
         try {
             $conn = new PDO('mysql:host='.Config::get('mysql/host').';dbname='.Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

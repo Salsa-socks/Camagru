@@ -4,24 +4,22 @@
     if (Session::exists('profile')) {
         echo '<p>' . Session::flash('profile') . '</p>';
     }
+            $username = Input::get('user');
+            $user = new User($username);
+            $id= $user->data()->id;
+            try {
+                $conn = new PDO('mysql:host='.Config::get('mysql/host').';dbname='.Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch(PDOException $e) {
+                echo "failed to connect to server";
+            }
 
-        $username = Input::get('user');
-        $user = new User($username);
-        $id= $user->data()->id;
-        try {
-            $conn = new PDO('mysql:host='.Config::get('mysql/host').';dbname='.Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e) {
-            echo "failed to connect to server";
-        }
-
-        if (!$user->exists()) {
-            Redirect::to('./errors/404.php');
-            Session::flash('404','you need to login');
-        } else {
-            $data = $user->data();
-        }
-
+            if (!$user->exists()) {
+                Redirect::to('./errors/404.php');
+                Session::flash('404','you need to login');
+            } else {
+                $data = $user->data();
+            }
         if (isset($_POST['picup'])) {
             
             $file = $_FILES['upimage'];
@@ -62,8 +60,7 @@
 
         $numperpage = 5;
         $numlinks = ceil($numrecords/$numperpage);
-        echo "num of page links is " . $numlinks . "     ";
-        $page = $_GET['start'];
+        $page = isset($_GET['start']) ? $_GET['start'] : 0;
         if (!$page) {
             $page = 0;
         }
@@ -72,7 +69,6 @@
         $sql = "SELECT * FROM `images` ORDER BY `images`.`postdate` DESC LIMIT $start,$numperpage";
         $res = $conn->prepare($sql);
         $res->execute();
-        echo "total num of records is " . $rowi[0];
 
 ?>
 
@@ -165,7 +161,6 @@
                             <p style='color: rgb(244, 112, 239);margin: 1% auto; width: 40%;'><?php echo $row['username']; ?></p>
                             <img src='<?php echo $row['imgaddress'];?>' style='width: 40%;border: 2px solid black; margin-top: 0%;'>
                         </div>
-
                         <div class='symbolbox'>
                             <form action="../functions/like.php" method="post">
                             <input type="submit" value="like" id="like" style="width: 20%; font-size: 1.5vw; background: #39c1ff; color: white; font-family: Oswald;">
