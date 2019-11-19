@@ -62,7 +62,7 @@
 
         $numperpage = 5;
         $numlinks = ceil($numrecords/$numperpage);
-        echo "num of page links is " . $numlinks;
+        echo "num of page links is " . $numlinks . "     ";
         $page = $_GET['start'];
         if (!$page) {
             $page = 0;
@@ -158,6 +158,7 @@
                 </div>
                 <?php
                 for($i=0;$i<=$numlinks;$i++) {
+                    $y = $i + 1;
                     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                         <div id='imgsec'>
@@ -209,8 +210,7 @@
                         </div>
                         <?php
                     }
-                    
-                    echo '<a href="profile.php?start='.$i.'" style="font-size: 3vw; padding: 1%;">'.$i.'</a>';
+                    echo '<a href="profile.php?start='.$i.'" style="font-size: 3vw; padding: 1%; background: white">'.$y.'</a>';
                 }
                 ?>
             <script src="./js/modal.js"></script>
