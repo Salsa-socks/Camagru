@@ -57,6 +57,20 @@
                 imagepng($tmp, $tmp_path, 9);
             }         
         }
+
+        $numperpage = 5;
+        //find out how many total records 
+        //find out how many plinks based on total/numberpage
+
+        $countsql = $conn->prepare("SELECT COUNT(`imagename`) FROM `images`");
+        $countsql->execute();
+        $rowi = $countsql->fetch();
+        $numrecords = $rowi[0];
+
+        $numlinks = ceil($numrecords/$numperpage);
+        // echo "num of page links is " . $numlinks;
+        // echo "total num of records is " . $rowi[0];
+
 ?>
 
 <html>
@@ -129,7 +143,15 @@
             </div>
                 <div class="profile">
                     <div class="usern"><h3 style="text-align: left; font-size: 3vh"> Username: <?php echo escape($data->username); ?></h3></div>
-                    <div class="unamed"><h2 style="text-align: left;font-size: 2vh; padding-top: 2%"> Name: <?php echo escape($data->name);?> </h2></div>  
+                    <div class="unamed"><h2 style="text-align: left;font-size: 2vh; padding-top: 2%"> Name: <?php echo escape($data->name);?> </h2></div>
+                    <br/>
+                    <?php
+                if($user->isLoggedin()) {
+                    ?>
+                    <a href="logout.php" style="font-size: 2vw;padding-top: 5%;float: right;">Log out</a>
+                    <?php
+                }
+                ?>
                 </div>
 
                 <?php
@@ -155,13 +177,21 @@
                             $fetch_likes = "SELECT * FROM `likes` WHERE imageid=? ORDER BY `likes`.`postdate` DESC";
                             $res3 = $conn->prepare($fetch_likes);
                             $res3->execute(array($row['id']));
+                            $likes = 0;
                             while ($rowl = $res3->fetch(PDO::FETCH_ASSOC)) {
-                                $poster = $user->db()->get_property('username', 'users', array(
+                                $liker = $user->db()->get_property('username', 'users', array(
                                     'id', '=' ,$rowl['likerid']
                                 ))[0]->username;
+                                $likes = $user->db()->get_property_count('id','likes', 'imageid', $rowl['imageid']);
                             ?>
-                                <div class="likes" style="color: #39c1ff; font-size:1.4vw;width: 100%;background: #f3f3f3;margin-top: 3%;"><?=$poster;?> likes your picture</div>
+                                <div class="likes" style="color: #39c1ff; font-size:1.4vw;width: 100%;background: #f3f3f3;margin-top: 3%;"><?=$liker;?> likes this picture</div>
                             <?php
+                            }
+                            if ($likes) {
+                                echo "<br/>";
+                                echo $likes . " like(s)";
+                            } else {
+                                echo "";
                             }
                             $fetch_comments = "SELECT * FROM `comments` WHERE `imageid`=? ORDER BY `comments`.`postdate` DESC";
                             $res2 = $conn->prepare($fetch_comments);

@@ -24,6 +24,12 @@
             return self::$_instance;
         }
 
+        public function get_property_count($property,$table, $field, $var) {
+			$eql= '=';
+			$sql= "SELECT {$property} FROM {$table} WHERE {$field} {$eql} {$var}";  
+				return $this->query($sql)->_query->rowCount();
+		}
+
         public function query($sql, $params = array()){
             $this->_error = false;
             if($this->_query = $this->_pdo->prepare($sql)) {
