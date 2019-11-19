@@ -3,6 +3,17 @@ body {
     background-image: url(../img/back.png);
     background-size: cover;
     background-attachment: fixed;
+    margin: 0;
+}
+
+footer {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    background: black;
+    height: 2%;
+    overflow: hidden;
+    margin-top: 2%;
 }
 
 header {

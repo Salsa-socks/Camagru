@@ -141,8 +141,8 @@
                 </div>
             </div>
                 <div class="profile">
-                    <div class="usern"><h3 style="text-align: left; font-size: 3vh"> Username: <?php echo escape($data->username); ?></h3></div>
-                    <div class="unamed"><h2 style="text-align: left;font-size: 2vh; padding-top: 2%"> Name: <?php echo escape($data->name);?> </h2></div>
+                    <div class="usern"><h3 style="text-align: left; font-size: 3vh; margin-left: 2%"> Username: <?php echo escape($data->username); ?></h3></div>
+                    <div class="unamed"><h2 style="text-align: left;font-size: 2vh; padding-top: 2%; margin-left:2%"> Name: <?php echo escape($data->name);?> </h2></div>
                     <br/>
                     <?php
                 if($user->isLoggedin()) {
@@ -222,4 +222,7 @@
             <!-- <script src="./js/noRclick.js"></script> -->
         </div>
     </body>
+    <footer>
+        This is a footer for the markingsheet...
+    </footer>
 </html>
