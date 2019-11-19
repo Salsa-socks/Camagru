@@ -14,9 +14,6 @@
         } catch(PDOException $e) {
             echo "failed to connect to server";
         }
-        $sql = "SELECT * FROM `images` ORDER BY `images`.`postdate` DESC";
-        $res = $conn->prepare($sql);
-        $res->execute();
 
         if (!$user->exists()) {
             Redirect::to('./errors/404.php');
@@ -58,18 +55,24 @@
             }         
         }
 
-        $numperpage = 5;
-        //find out how many total records 
-        //find out how many plinks based on total/numberpage
-
         $countsql = $conn->prepare("SELECT COUNT(`imagename`) FROM `images`");
         $countsql->execute();
         $rowi = $countsql->fetch();
         $numrecords = $rowi[0];
 
+        $numperpage = 5;
         $numlinks = ceil($numrecords/$numperpage);
-        // echo "num of page links is " . $numlinks;
-        // echo "total num of records is " . $rowi[0];
+        echo "num of page links is " . $numlinks;
+        $page = $_GET['start'];
+        if (!$page) {
+            $page = 0;
+        }
+        $start = $page * $numperpage;
+
+        $sql = "SELECT * FROM `images` ORDER BY `images`.`postdate` DESC LIMIT $start,$numperpage";
+        $res = $conn->prepare($sql);
+        $res->execute();
+        echo "total num of records is " . $rowi[0];
 
 ?>
 
@@ -153,12 +156,12 @@
                 }
                 ?>
                 </div>
-
                 <?php
+                for($i=0;$i<=$numlinks;$i++) {
                     while($row = $res->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                         <div id='imgsec'>
-                            <p style='color: rgb(58, 193, 255);margin: 1% auto; width: 40%;'><?php echo $row['username']; ?></p>
+                            <p style='color: rgb(244, 112, 239);margin: 1% auto; width: 40%;'><?php echo $row['username']; ?></p>
                             <img src='<?php echo $row['imgaddress'];?>' style='width: 40%;border: 2px solid black; margin-top: 0%;'>
                         </div>
 
@@ -206,7 +209,10 @@
                         </div>
                         <?php
                     }
-                    ?>
+                    
+                    echo '<a href="profile.php?start='.$i.'" style="font-size: 3vw; padding: 1%;">'.$i.'</a>';
+                }
+                ?>
             <script src="./js/modal.js"></script>
             <script src="./js/cam.js"></script>
             <!-- <script src="./js/noRclick.js"></script> -->
