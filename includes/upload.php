@@ -35,8 +35,9 @@
          imagedestroy($src);
          unlink($overlaypath);
    }
-   
+
    if ($user) {
+      
       $user->upload(array(
          'imagename' => $baseimage,
          'username' => $username,

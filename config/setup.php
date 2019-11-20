@@ -1,17 +1,5 @@
 <?php
-
-// require_once '../core/init.php';
-
-	$host = "localhost";
-	$username = "root";
-	$password = "Ocvm53ujido";
-	$db = "camlog";
-	$pdo = new PDO("mysql:host=$host;", $username, $password);
-	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-	if (!$pdo) {
-		echo "could not connect";
-	}
+	require_once 'database.php';
 
 	$sql = "CREATE DATABASE IF NOT EXISTS " . $db;
 	$stmt = $pdo->prepare($sql);
@@ -19,7 +7,7 @@
 	$sql = 'USE ' . $db;
 	$stmt = $pdo->prepare($sql);
 	if ($stmt->execute()) {
-		echo "Database created";
+		echo "Database created<br>";
     } else {
         echo "nothing, zip zero";
 	}
@@ -37,7 +25,7 @@
 		joined DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)';
 	$stmt = $pdo->prepare($sql);
 	if ($stmt->execute()) {
-		echo "users created";
+		echo "users created<br>";
     } else {
         echo "nothing, zip zero";
 	}
@@ -48,7 +36,7 @@
 		`group` VARCHAR(50) NOT NULL)';
 	$stmt = $pdo->prepare($sql);
 	if ($stmt->execute()) {
-		echo "groups created";
+		echo "groups created<br>";
     } else {
         echo "nothing, zip zero";
 	}
@@ -59,20 +47,20 @@
 		`hash` VARCHAR(150) NOT NULL)';
 	$stmt = $pdo->prepare($sql);
 	if ($stmt->execute()) {
-		echo "Users_session created";
+		echo "Users_session created <br>";
     } else {
         echo "nothing, zip zero";
 	}
 
 	$sql = 'CREATE TABLE IF NOT EXISTS images (
 		id INT AUTO_INCREMENT PRIMARY KEY,
-		username INT NOT NULL,
+		username VARCHAR(250) NOT NULL,
 		imgaddress VARCHAR(130) NOT NULL,
 		imagename VARCHAR(64) NOT NULL,
 		postdate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)';
 	$stmt = $pdo->prepare($sql);
 	if ($stmt->execute()) {
-		echo "images created";
+		echo "images created<br>";
     } else {
         echo "nothing, zip zero";
 	}
@@ -85,7 +73,7 @@
 		postdate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)';
 	$stmt = $pdo->prepare($sql);
 	if ($stmt->execute()) {
-		echo "Comments created";
+		echo "Comments created<br>";
     } else {
         echo "nothing, zip zero";
 	}
@@ -98,7 +86,7 @@
 		postdate DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)';
 	$stmt = $pdo->prepare($sql);
 	if ($stmt->execute()) {
-		echo "likes created";
+		echo "likes created<br>";
     } else {
         echo "nothing, zip zero";
 	}

@@ -57,8 +57,7 @@
             $headers .= "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-Type:text/html;charset=UTF-8". "\r\n";
             mail($email, $subject, $message, $headers);
-
-            Session::flash('home', 'Please check your email for confirmation');
+            
             Redirect::to('thankyou.php');
             
           } catch (Exception $e) {

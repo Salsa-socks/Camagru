@@ -1,4 +1,5 @@
 <?php
+    require_once '../config/setup.php';
     require_once '../core/init.php';
     
     if (Session::exists('home')) {

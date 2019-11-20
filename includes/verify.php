@@ -6,7 +6,7 @@
         $check = $user->data()->id;
         $saltcheck = $_GET['salt'];
         if ($check) {
-
+            
             try {
                 $conn->update(array(
                     'emailconfirm' => 1
