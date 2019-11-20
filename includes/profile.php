@@ -122,7 +122,7 @@
                             <a href ="#" id="capture" class="capturebtn">Take Photo</a>
                             <canvas id="sticker" width="400" height="300" style="position: absolute;top: 0px;left: 0px;z-index: 2;width: 100%;"></canvas>
                             <canvas id="canvas" width="500" height="380" ></canvas>
-                            <button type="button" style="font-size: 2.8vh;" class="uploadbtn" onclick="camReset()">Retake</button>
+                            <button type="button" style="font-size: 1.8vh;" class="uploadbtn" onclick="camReset()">Retake</button>
                             <a href="#" id="upload" class="uploadbtn">Post</a>
                         </div>
                         <div class="stickers">

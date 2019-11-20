@@ -13,7 +13,8 @@
           ),
           'password' => array(
               'required' => true,
-              'min' => 6
+              'min' => 6,
+              'max' => 20
           ),
           'password_again' => array(
               'required' => true,
