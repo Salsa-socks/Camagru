@@ -342,23 +342,24 @@ header a .fas:click {
     float: left;
 }
 
-
-}
 .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
+
 .errorbox {
     text-align: center;
 }
+
 .logbutton {
     background-color: rgb(58, 193, 255);
     color: white;
@@ -368,13 +369,16 @@ header a .fas:click {
     cursor: pointer;
     width: 100%;
 }
+
 .logbutton:hover {
     opacity: 0.8;
 }
+
 .details {
     width: 50%;
     margin: 0 auto;
 }
+
 .fade-in {
     animation: fadeIn ease 5s;
     -webkit-animation: fadeIn ease 5s;
@@ -382,65 +386,70 @@ header a .fas:click {
     -o-animation: fadeIn ease 5s;
     -ms-animation: fadeIn ease 5s;
 }
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
     }
-    
     100% {
         opacity: 1;
     }
 }
+
 @-moz-keyframes fadeIn {
     0% {
         opacity: 0;
     }
-    
     100% {
         opacity: 1;
     }
 }
+
 @-webkit-keyframes fadeIn {
     0% {
         opacity: 0;
     }
-    
     100% {
         opacity: 1;
     }
 }
+
 @-o-keyframes fadeIn {
     0% {
         opacity: 0;
     }
-    
     100% {
         opacity: 1;
     }
 }
+
 @-ms-keyframes fadeIn {
     0% {
         opacity: 0;
     }
-    
     100% {
         opacity: 1;
     }
 }
+
 .style {
     text-align: center;
 }
+
 .style p {
     color: black;
     font-size: 4vh;
 }
+
 .superheader {
     font-size: 9vw;
     margin-top: -7vh;
 }
+
 h4 {
     margin: 0;
 }
+
 .landinginfo {
     width: 100%;
     text-align: center;
