@@ -77,18 +77,11 @@
         <header>
             <a href= "index.php"><i class="fas fa-home"></i></a>
             <a href= "profile.php"><i class="fas fa-smile-wink"></i></a>
-            <a href= "likes.php"><i class="fas fa-heart"></i></a>
             <a href= "profile.php"><i class="fas fa-user-circle"></i></a>
             <button id="myBtn" style="color: white; border: none; cursor: pointer; background: none; width: 0; margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
+            <a href="logout.php" style="padding-left: 10%;">Log out</a>
         </header>
         <div class="fade-in">
-        <?php
-                if($user->isLoggedin()) {
-                    ?>
-                    <a href="logout.php" style="font-size: 2vw;padding-top: 5%;float: right;">Log out</a>
-                    <?php
-                }
-                ?>
             <br/>
             <h2>Update Your details</h2>
             <div class="details">

@@ -89,9 +89,9 @@
             <header>
                 <a href= "index.php"><i class="fas fa-home"></i></a>
                 <a href= "profile.php"><i class="fas fa-smile-wink"></i></a>
-                <a href= "likes.php"><i class="fas fa-heart"></i></a>
                 <a href= "update.php"><i class="fas fa-user-circle"></i></a>
                 <button id="myBtn" style="color: white; border: none; cursor: pointer; background: none; width: 0; margin: 0; margin-left: 4%"><i class="fas fa-camera-retro"></i></button>
+                <a href="logout.php" style="padding-left: 10%;">Log out</a>
             </header>
             <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -144,13 +144,6 @@
                     <div class="usern"><h3 style="text-align: left; font-size: 3vh; margin-left: 2%"> Username: <?php echo escape($data->username); ?></h3></div>
                     <div class="unamed"><h2 style="text-align: left;font-size: 2vh; padding-top: 2%; margin-left:2%"> Name: <?php echo escape($data->name);?> </h2></div>
                     <br/>
-                    <?php
-                if($user->isLoggedin()) {
-                    ?>
-                    <a href="logout.php" style="font-size: 2vw;padding-top: 5%;float: right;">Log out</a>
-                    <?php
-                }
-                ?>
                 </div>
                 <?php
                 for($i=0;$i<=$numlinks;$i++) {
