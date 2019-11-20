@@ -19,7 +19,7 @@
     $rowi = $countsql->fetch();
     $numrecords = $rowi[0];
 
-    $numperpage = 2;
+    $numperpage = 5;
     $numlinks = ceil($numrecords/$numperpage);
     $page = isset($_GET['start']) ? $_GET['start'] : 0;
     if (!$page) {

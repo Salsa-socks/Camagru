@@ -4,9 +4,10 @@
     if (Session::exists('profile')) {
         echo '<p>' . Session::flash('profile') . '</p>';
     }
-            $username = Input::get('user');
-            $user = new User($username);
+            // $username = Input::get('user');
+            $user = new User();
             $id= $user->data()->id;
+            $username = $user->data()->username;
             try {
                 $conn = new PDO('mysql:host='.Config::get('mysql/host').';dbname='.Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -70,6 +71,12 @@
         $res = $conn->prepare($sql);
         $res->execute();
 
+        $sql2 = "SELECT * FROM `images` WHERE username = '$username' ORDER BY `images`.`postdate` DESC LIMIT $start,$numperpage";
+        $res2 = $conn->prepare($sql2);
+        $res2->execute();
+
+        // $res2 = $user->db()->get_user_images($username,$page);
+
 ?>
 
 <html>
@@ -95,10 +102,18 @@
             </header>
             <div id="myModal" class="modal">
                 <div class="modal-content">
-                    <span id="refresh" class="close">&times;</span>
-                    <h2>Hi, take a pic and upload it!</h2>
-                    <p>Make sure you click allow to use your cam, when you're 
-                        done taking your pic, add a filter and upload it </p>
+                    <span id="refresh" class="close" style="font-size: 6vw;">&times;</span>
+                    <div class="booth2">
+                    <?php
+                    while($row2 = $res2->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
+                        <div id='imgsec2'>
+                            <img src='<?php echo $row2['imgaddress'];?>' style='width: 100%;border: 2px solid black; margin-top: 0%;'>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    </div>
                     <div class="booth">
                         <img id="stick" style="position:absolute; width: 90%;">
                         <video id="video" width="100%"></video>
@@ -107,7 +122,7 @@
                             <a href ="#" id="capture" class="capturebtn">Take Photo</a>
                             <canvas id="sticker" width="400" height="300" style="position: absolute;top: 0px;left: 0px;z-index: 2;width: 100%;"></canvas>
                             <canvas id="canvas" width="500" height="380" ></canvas>
-                            <button type="button" style="font-size: 1.8vh;" class="uploadbtn" onclick="camReset()">Retake</button>
+                            <button type="button" style="font-size: 2.8vh;" class="uploadbtn" onclick="camReset()">Retake</button>
                             <a href="#" id="upload" class="uploadbtn">Post</a>
                         </div>
                         <div class="stickers">
@@ -216,6 +231,6 @@
         </div>
     </body>
     <footer>
-        This is a footer for the markingsheet...
+        This is a footer for the markingsheet... bnkosi
     </footer>
 </html>

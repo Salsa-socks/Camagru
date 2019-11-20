@@ -8,8 +8,10 @@ body {
 
 footer {
     width: 100%;
+    position: fixed;
     bottom: 0;
-    position: absolute;
+    text-align: center;
+    color: white;
     background: black;
     height: 2%;
     overflow: hidden;
@@ -24,6 +26,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 99;
+    text-align: center;
 }
 
 #imgsec {
@@ -161,7 +164,7 @@ input[type="file"] {
     background: #39c1ff;
     color: white;
     margin: 1%;
-    width: 50%;
+    width: 90%;
     padding: 2%;
 }
 
@@ -230,11 +233,10 @@ header a .fas:click {
 }
 
 .booth {
-    width: 75%;
+    width: 40%;
     position: relative;
+    float: right;
     background: white;
-    border: 1px solid rgb(214, 214, 214);
-    margin: 0 auto;
     text-align: center;
 }
 
@@ -331,27 +333,32 @@ header a .fas:click {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 40%;
+    width: 45%;
+    height: 90%;
 }
 
+.booth2 {
+    width: 42%;
+    float: left;
+}
+
+
+}
 .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
-
 .errorbox {
     text-align: center;
 }
-
 .logbutton {
     background-color: rgb(58, 193, 255);
     color: white;
@@ -361,16 +368,13 @@ header a .fas:click {
     cursor: pointer;
     width: 100%;
 }
-
 .logbutton:hover {
     opacity: 0.8;
 }
-
 .details {
     width: 50%;
     margin: 0 auto;
 }
-
 .fade-in {
     animation: fadeIn ease 5s;
     -webkit-animation: fadeIn ease 5s;
@@ -378,70 +382,65 @@ header a .fas:click {
     -o-animation: fadeIn ease 5s;
     -ms-animation: fadeIn ease 5s;
 }
-
 @keyframes fadeIn {
     0% {
         opacity: 0;
     }
+    
     100% {
         opacity: 1;
     }
 }
-
 @-moz-keyframes fadeIn {
     0% {
         opacity: 0;
     }
+    
     100% {
         opacity: 1;
     }
 }
-
 @-webkit-keyframes fadeIn {
     0% {
         opacity: 0;
     }
+    
     100% {
         opacity: 1;
     }
 }
-
 @-o-keyframes fadeIn {
     0% {
         opacity: 0;
     }
+    
     100% {
         opacity: 1;
     }
 }
-
 @-ms-keyframes fadeIn {
     0% {
         opacity: 0;
     }
+    
     100% {
         opacity: 1;
     }
 }
-
 .style {
     text-align: center;
 }
-
 .style p {
     color: black;
     font-size: 4vh;
 }
-
 .superheader {
     font-size: 9vw;
     margin-top: -7vh;
 }
-
 h4 {
     margin: 0;
 }
-
 .landinginfo {
     width: 100%;
     text-align: center;

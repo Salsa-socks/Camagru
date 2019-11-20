@@ -28,6 +28,12 @@
 			$eql= '=';
 			$sql= "SELECT {$property} FROM {$table} WHERE {$field} {$eql} {$var}";  
 				return $this->query($sql)->_query->rowCount();
+        }
+        
+        public function get_user_images($username, $page) {
+			$eq= '=';
+			$sql= "SELECT imagename, id, username FROM images WHERE username {$eq} '$username' ORDER BY postdate DESC LIMIT $page,5"; 
+			return $this->query($sql)->_results;
 		}
 
         public function query($sql, $params = array()){
